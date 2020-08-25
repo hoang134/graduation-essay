@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
 
 class User extends Authenticatable
 {
@@ -36,4 +37,24 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    function comments()
+    {
+        return $this->hasMany('App\Comment', 'user_id', 'id');
+    }
+
+    public function posts()
+    {
+        return $this->belongsToMany('App\Post', 'user_posts', 'user_id', 'post_id')->withTimestamps();
+    }
+
+    public function messengers()
+    {
+        return $this->hasMany('App\Messenger','user_id','id');
+    }
+
+    const ROLE_ADMIN = "ADMIN";
+    const ROLE_USER = "USER";
+    const GENDER_MALE = "MALE";
+    const GENDER_FEMALE = "FEMALE";
 }
