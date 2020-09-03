@@ -24,9 +24,10 @@ class CreateUsersTable extends Migration
             $table->string('class')->nullable();
             $table->string('email_verified_at')->nullable();
             $table->enum('gender',[User::GENDER_MALE, User::GENDER_FEMALE])->nullable();
-            $table->enum('role',[User::ROLE_ADMIN, User::ROLE_USER]);
+            $table->enum('role',[User::ROLE_ADMIN, User::ROLE_USER,User::ROLE_SUPER_ADMIN]);
             $table->rememberToken();
             $table->timestamps();
+//            $table->softDeletes();
         });
     }
 

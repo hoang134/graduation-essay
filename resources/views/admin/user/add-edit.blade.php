@@ -1,19 +1,19 @@
 @extends('admin.layout')
-@section('title', 'đề tài')
+@section('title', 'tài khoản')
 
 @section('content')
     <h2>@if(isset($user)) Sửa tài khoản @else Thêm tài khoản  @endif </h2>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-8">
-                <form action="{{isset($user)? route("post.save",['id'=>$user->id]):route('post.save')}}" method="post">
+                <form action="{{isset($user)? route("user.save",['id'=>$user->id]):route('user.save')}}" method="post">
                     @csrf
 
                     <div class="form-group row">
                         <label for="code" class="col-sm-2 col-form-label">tên</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="name" name="name"
-                                   value="{{ old('address', isset($user) ? $user->title : '') }}">
+                                   value="{{ old('name', isset($user) ? $user->name : '') }}">
                         </div>
                     </div>
 
@@ -21,7 +21,7 @@
                         <label for="code" class="col-sm-2 col-form-label">ngày sinh</label>
                         <div class="col-sm-10">
                             <input type="date" class="form-control" id="birthday" name="birthday"
-                                   value="{{ old('address', isset($user) ? $user->title : '') }}">
+                                   value="{{ old('birthday', isset($user) ? $user->birthday : '') }}">
                         </div>
                     </div>
 
@@ -29,23 +29,15 @@
                         <label for="code" class="col-sm-2 col-form-label">code</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="code" name="code"
-                                   value="{{ old('address', isset($user) ? $user->title : '') }}">
+                                   value="{{ old('code', isset($user) ? $user->code : '') }}">
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label for="code" class="col-sm-2 col-form-label">email</label>
                         <div class="col-sm-10">
-                            <input type="date" class="form-control" id="email" name="email"
-                                   value="{{ old('address', isset($user) ? $user->title : '') }}">
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="quantity" class="col-sm-2 col-form-label">Mật khẩu</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="contents" name="contents"
-                                   value="{{ old('phone', isset($user) ? $user->content: '') }}">
+                            <input type="text" class="form-control" id="email" name="email"
+                                   value="{{ old('email', isset($user) ? $user->email : '') }}">
                         </div>
                     </div>
 
@@ -53,30 +45,54 @@
                         <label for="quantity" class="col-sm-2 col-form-label">Lớp</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="class" name="class"
-                                   value="{{ old('phone', isset($user) ? $user->content: '') }}">
+                                   value="{{ old('class', isset($user) ? $user->class: '') }}">
+                        </div>
+                    </div>
+
+                    <div>
+
+                        <span style="font-size: 15px;margin-left: 200px;" >Name</span>
+                        <input type="radio" name="gender" id="MALE" value="MALE" >
+                        <span style="font-size: 15px;">Nữ</span>
+                        <input type="radio" name="gender" id="FEMALE" value="FEMALE">
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="quantity" class="col-sm-2 col-form-label">Mật khẩu{{isset($user) ? ' mới':''}}</label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control" id="password" name="password"
+                                   value="">
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label for="quantity" class="col-sm-2 col-form-label">Giới tính</label>
+                        <label for="quantity" class="col-sm-2 col-form-label"> nhập lại mật khẩu</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="gender" name="gender"
-                                   value="{{ old('phone', isset($user) ? $user->content: '') }}">
+                            <input type="password" class="form-control" id="password_confirmation" name="password_confirmation"
+                                   value="">
                         </div>
                     </div>
-
-                    <div class="form-group row">
-                        <label for="quantity" class="col-sm-2 col-form-label">Mật khẩu</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="contents" name="contents"
-                                   value="{{ old('phone', isset($user) ? $user->content: '') }}">
+                    @if(!isset($user))
+                        <div>
+                            <span style="font-size: 15px;margin-left: 200px;" >Sinh viên</span>
+                            <input type="radio" name="role" id="male" value="user" >
+                            <span style="font-size: 15px;">giảng viên</span>
+                            <input type="radio" name="role" id="admin" value="admin">
                         </div>
-                    </div>
-
+                    @endif
                     <div class="form-group row justify-content-end">
                         <button type="submit" class="btn btn-primary">Lưu</button>
                     </div>
                 </form>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
             </div>
         </div>
     </div>

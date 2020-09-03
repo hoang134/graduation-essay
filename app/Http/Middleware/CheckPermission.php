@@ -2,11 +2,11 @@
 
 namespace App\Http\Middleware;
 
-use App\User;
+use App\Post;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class CheckRole
+class CheckPermission
 {
     /**
      * Handle an incoming request.
@@ -16,15 +16,11 @@ class CheckRole
      * @return mixed
      */
     public function handle($request, Closure $next)
-    {
-        if (!Auth::check())
-            return redirect()->route('home');
-        if (Auth::user()->role == User::ROLE_SUPER_ADMIN)
+    {   if(Auth::user()->id == Post::find($request->id)->users()->first()->id)
+        {
             return $next($request);
-        if (Auth::user()->role == User::ROLE_ADMIN)
-            return $next($request);
+        }
         else
-             return redirect()->route('home');;
-
+            return redirect()->route('home');
     }
 }

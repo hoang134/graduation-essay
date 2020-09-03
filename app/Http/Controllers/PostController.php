@@ -30,7 +30,7 @@ class PostController extends Controller
         $post = Post::find($request->id);
 
         return view('admin.post.add-edit',[
-            'posts'=>$post,
+            'post'=>$post,
             'activeMenu'=>$this->activeMenu
         ]);
 
@@ -45,6 +45,11 @@ class PostController extends Controller
 
     public function save(Request $request)
     {
+        $request->validate([
+            'title'=>'required',
+            'content'=>'required'
+        ]);
+
         if(!isset($request->id))
         {
             $post  = new Post();
@@ -62,6 +67,8 @@ class PostController extends Controller
         }
         else
         {
+
+
             $post = Post::find($request->id);
             $post->title = $request->title;
             $post->content = $request->contents;

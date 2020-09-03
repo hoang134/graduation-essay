@@ -13,6 +13,14 @@ class UserSeeder extends Seeder
     public function run()
     {
         $admin = new User();
+        $admin->name = "admin";
+        $admin->email = "admin@gmail.com";
+        $admin->password = bcrypt('123456');
+        $admin->gender =User::GENDER_MALE ;
+        $admin->role =User::ROLE_SUPER_ADMIN ;
+        $admin->save();
+
+        $admin = new User();
         $admin->name = "gv1";
         $admin->email = "gv1@gmail.com";
         $admin->password = bcrypt('123456');
@@ -65,7 +73,7 @@ class UserSeeder extends Seeder
         $user->email = "linh@gmail.com";
         $user->password = bcrypt('123456');
         $user->class = 'K62-L';
-        $user->gender =User::GENDER_MALE ;
+        $user->gender =User::GENDER_FEMALE ;
         $user->role =User::ROLE_USER ;
         $user->save();
 
