@@ -3,6 +3,15 @@
 
 @section('content')
     <h2>@if(isset($user)) Sửa tài khoản @else Thêm tài khoản  @endif </h2>
+        @if(!isset($user))
+            <div class="container">
+                <form action="">
+                    <input type="file" value="Thêm tài khoản bằn Excel">
+                    <input type="submit" value="tạo tài khoản">
+                </form>
+
+            </div>
+        @endif
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-8">
@@ -20,7 +29,7 @@
                     <div class="form-group row">
                         <label for="code" class="col-sm-2 col-form-label">ngày sinh</label>
                         <div class="col-sm-10">
-                            <input type="date" class="form-control" id="birthday" name="birthday"
+                            <input  type=text class="form-control" id="birthday" placeholder="xx/yy/zzzz" name="birthday"
                                    value="{{ old('birthday', isset($user) ? $user->birthday : '') }}">
                         </div>
                     </div>
@@ -72,6 +81,7 @@
                                    value="">
                         </div>
                     </div>
+
                     @if(!isset($user))
                         <div>
                             <span style="font-size: 15px;margin-left: 200px;" >Sinh viên</span>

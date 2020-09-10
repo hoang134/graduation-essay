@@ -24,7 +24,7 @@
                         <label for="quantity" class="col-sm-2 col-form-label">Nội dung</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="contents" name="contents"
-                                   value="{{ old('phone', isset($post) ? $post->content: '') }}">
+                                   value="{{ old('contents', isset($post) ? $post->content: '') }}">
 
                             @if ($errors->has('phone'))
                                 <small class="form-text text-danger">{{ $errors->first('phone') }}</small>

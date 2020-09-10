@@ -3,7 +3,10 @@
 
 @section('content')
     <h2>Quản lý tài khoản</h2>
-    <a href="{{route('user.create')}}">Thêm đề tài khoản</a>
+    @can('create',\App\User::class)
+        <a href="{{route('user.create')}}">Thêm  tài khoản</a>
+
+    @endcan
     <div class="table-responsive">
         <table class="table table-striped table-sm">
             <thead>

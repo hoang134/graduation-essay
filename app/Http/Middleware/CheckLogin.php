@@ -2,11 +2,10 @@
 
 namespace App\Http\Middleware;
 
-use App\Post;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class CheckPermission
+class CheckLogin
 {
     /**
      * Handle an incoming request.
@@ -16,11 +15,11 @@ class CheckPermission
      * @return mixed
      */
     public function handle($request, Closure $next)
-    {   if(Auth::user()->id == Post::find($request->id)->users()->first()->id)
-        {
+    {
+        if(Auth::check())
             return $next($request);
-        }
-        else
-            return redirect()->route('home');
+         else
+            return redirect()->route('login');
+
     }
 }

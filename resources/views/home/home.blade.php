@@ -13,34 +13,28 @@
     <title>Home</title>
 </head>
 <body>
-    <table class="table">
+    <h1>Trang chủ</h1>
+    <div><a href="{{route('student.information')}}" style="color: #1c7430; font-size: 25px;float: right;padding-bottom: 10px; padding-top: 20px; padding-right: 15px" >{{\Illuminate\Support\Facades\Auth::user()->name}}</a></div>
+    <table class="table table-striped table-sm">
         <thead>
         <tr>
-            <th scope="col">#</th>
-            <th scope="col">title</th>
-            <th scope="col">post</th>
-            <th scope="col">action</th>
+            <th scope="col">id</th>
+            <th scope="col">Giảng viên</th>
+            <th scope="col">Tên đề tài</th>
+            <th scope="col">Nội dung</th>
+            <th scope="col">Thực hiện</th>
         </tr>
         </thead>
         <tbody>
+        @foreach($posts as $post)
         <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <td>{{$post->id}}</td>
+            <td>{{$post->title}}</td>
+            <td>{{$post->lecturer->first()->name}}</td>
+            <td>{{$post->content}}</td>
+            <td><a href="{{route('student.register',['id'=>$post->id])}}">Đăng ký</a></td>
         </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-        </tr>
+        @endforeach
         </tbody>
     </table>
 </body>

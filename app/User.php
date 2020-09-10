@@ -14,8 +14,8 @@ class User extends Authenticatable
     const ROLE_SUPER_ADMIN = "SUADMIN";
     const ROLE_ADMIN = "ADMIN";
     const ROLE_USER = "USER";
-    const GENDER_MALE = "MALE";
-    const GENDER_FEMALE = "FEMALE";
+    const GENDER_MALE = "Nam";
+    const GENDER_FEMALE = "Nữ";
 
     use Notifiable;
 
@@ -25,7 +25,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','role','gender','code','class','birthday',
     ];
 
     /**

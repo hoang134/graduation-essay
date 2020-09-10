@@ -23,8 +23,18 @@
                     <td>{{$post->lecturer->first()->name}}</td>
                     <td>{{$post->title}}</td>
                     <td>{{$post->content}}</td>
-                    <td><a href="{{route('post.edit',['id'=>$post->id])}}">Sửa</a></td>
-                    <td><a href="{{route('post.delete',['id'=>$post->id])}}">Xóa</a></td>
+
+                    <td>
+                        @can('update',$post)
+                            <a href="{{route('post.edit',['id'=>$post->id])}}">Sửa</a></td>
+                        @endcan
+                    <td>
+                        @can('delete',$post)
+                            <a href="{{route('post.delete',['id'=>$post->id])}}">Xóa</a>
+                        @endcan
+                    </td>
+
+
                 </tr>
             @endforeach
             </tbody>

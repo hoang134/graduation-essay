@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\User;
 use App\UserPost;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,6 +13,7 @@ class PostController extends Controller
 {   protected  $activeMenu  ="post-menu";
     public function index()
     {
+        $this->authorize('viewany',User::class);
         $posts = Post::all();
         return view('admin.post.index', [
             'posts'=>$posts,
@@ -28,7 +30,7 @@ class PostController extends Controller
 
     public function edit(Request $request){
         $post = Post::find($request->id);
-
+        $this->authorize('update',$post);
         return view('admin.post.add-edit',[
             'post'=>$post,
             'activeMenu'=>$this->activeMenu
@@ -38,6 +40,7 @@ class PostController extends Controller
 
     public function delete(Request $request){
         $post = Post::find($request->id);
+        $this->authorize('delete',$post);
         $post->delete();
         return redirect(route('post'))->with('success', "Xóa thành công!");;
 
@@ -47,7 +50,7 @@ class PostController extends Controller
     {
         $request->validate([
             'title'=>'required',
-            'content'=>'required'
+            'contents'=>'required'
         ]);
 
         if(!isset($request->id))

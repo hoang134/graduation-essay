@@ -2,7 +2,7 @@
 @section('title', 'Quản lý tài khoản')
 
 @section('content')
-    <h2>Quản lý tài khoản</h2>
+    <h2>Quản lý danh sách đăng ký đề tài</h2>
     <a href="{{route('user.create')}}">Thêm đề tài khoản</a>
     <div class="table-responsive">
         <table class="table table-striped table-sm">
@@ -23,8 +23,7 @@
                     <td>{{$userPost->post->title}}</td>
                     <td>{{$userPost->user->name}}</td>
                     <td>{{$userPost->type}}</td>
-                    <td><a href="">Sửa</a></td>
-                    <td><a href="">Xóa</a></td>
+                    <td><a href="{{route('list.delete',['id'=>$userPost->id])}}">Xóa</a></td>
                 </tr>
             @endforeach
             </tbody>

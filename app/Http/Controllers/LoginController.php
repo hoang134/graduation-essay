@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
@@ -19,15 +20,22 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             // Authentication passed...
-            return redirect()->route('post');
+            if (Auth::user()->role == User::ROLE_USER)
+            {
+                return redirect()->route('home');
+            }
+            else{
+                return redirect()->route('post');
+            }
+
         }
         else
-            return 0;
+            return redirect()->route('login');
     }
 
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('home');
+        return redirect()->route('login');
     }
 }

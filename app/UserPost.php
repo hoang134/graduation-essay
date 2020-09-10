@@ -4,8 +4,8 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 class UserPost extends Model
 {
-    const TYPE_POST = "POST";
-    const TYPE_REGISTER = "REGISTER";
+    const TYPE_POST = "Tạo";
+    const TYPE_REGISTER = "Đăng ký";
 
     public function reports()
     {
