@@ -32,10 +32,19 @@
             <td>{{$post->title}}</td>
             <td>{{$post->lecturer->first()->name}}</td>
             <td>{{$post->content}}</td>
-            <td><a href="{{route('student.register',['id'=>$post->id])}}">Đăng ký</a></td>
+            <td><a href="{{route('student.register',['user_id'=>\Illuminate\Support\Facades\Auth::user()->id,'post_id'=>$post->id])}}">Đăng ký</a></td>
         </tr>
         @endforeach
         </tbody>
     </table>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 </body>
 </html>

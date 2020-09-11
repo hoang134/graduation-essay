@@ -59,7 +59,7 @@ class UserController extends Controller
        {
            $request->validate([
                'name' => 'required|max:255',
-               'birthday' => 'date',
+               'birthday' => 'required',
                'gender' => 'required',
                'role' => 'required',
                'email' => 'required|email|max:255|unique:users',
@@ -80,7 +80,8 @@ class UserController extends Controller
            return redirect()->route('user')->with('success', "thêm tài khoản thành công");
        }
        else
-       {   $request->validate([
+       {
+           $request->validate([
            'name' => 'required|max:255',
            'gender' => 'required',
            'password_confirmation' => 'same:password'

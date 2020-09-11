@@ -61,9 +61,9 @@
                     <div>
 
                         <span style="font-size: 15px;margin-left: 200px;" >Name</span>
-                        <input type="radio" name="gender" id="MALE" value="MALE" >
+                        <input type="radio" name="gender" id="MALE" value="Nam" >
                         <span style="font-size: 15px;">Nữ</span>
-                        <input type="radio" name="gender" id="FEMALE" value="FEMALE">
+                        <input type="radio" name="gender" id="FEMALE" value="Nữ">
                     </div>
 
                     <div class="form-group row">

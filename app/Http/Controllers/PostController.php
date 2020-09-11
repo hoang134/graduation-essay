@@ -63,7 +63,7 @@ class PostController extends Controller
             $userPost = new UserPost();
             $userPost->user_id = Auth::user()->id;
             $userPost->post_id = $post->id;
-            $userPost->type =UserPost::TYPE_POST;
+            $userPost->type = UserPost::TYPE_POST;
             $userPost->save();
 
             return redirect()->route('post')->with('success', 'Tạo đề tài thành công!');;

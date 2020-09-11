@@ -15,7 +15,7 @@ class User extends Authenticatable
     const ROLE_ADMIN = "ADMIN";
     const ROLE_USER = "USER";
     const GENDER_MALE = "Nam";
-    const GENDER_FEMALE = "Nữ";
+    const  GENDER_FEMALE = "Nữ";
 
     use Notifiable;
 

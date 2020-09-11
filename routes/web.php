@@ -43,9 +43,14 @@ Route::prefix('admin')->middleware('CheckRole')->group(function () {
 
 
 
-Route::prefix('student')->middleware('CheckLogin')->group(function () {
+Route::prefix('student')->middleware('CheckLogin','CheckIsStudent')->group(function () {
     Route::get('information', 'StudentController@informationStudent')->name('student.information');
-    Route::get('register/{id}', 'StudentController@register')->name('student.register');
+    Route::get('edit', 'StudentController@edit')->name('student.edit');
+    Route::post('save/{id}', 'StudentController@save')->name('student.save');
+    Route::get('information', 'StudentController@informationStudent')->name('student.information');
+    Route::get('register/{user_id}/{post_id}', 'StudentController@register')->name('student.register');
+    Route::get('post', 'StudentController@post')->name('student.post');
+    Route::get('post/delete', 'StudentController@deletePost')->name('post.delete');
     Route::get('repost', 'RepostController@create')->name('repost.create');
     Route::get('logout', 'LoginController@logout')->name('logout');
 });
