@@ -14,7 +14,7 @@
             <p>Tên đề tài: {{$user->posts->first()->title}}</p>
             <p>Giảng viên: {{$user->posts->first()->lecturer->first()->name}}</p>
             <p>Nội dung để tài: {{$user->posts->first()->content}}</p>
-            <p><a href="{{route('post.delete')}}">hủy đăng ký</a></p>
+            <p><a href="{{route('student.post.delete')}}">hủy đăng ký</a></p>
         </div>
     @else
         <p>Bạn chưa dăng ký khóa luận. <a href="{{route('home')}}">Đăng ký</a> </p>

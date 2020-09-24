@@ -5,8 +5,9 @@
     <h2>@if(isset($user)) Sửa tài khoản @else Thêm tài khoản  @endif </h2>
         @if(!isset($user))
             <div class="container">
-                <form action="">
-                    <input type="file" value="Thêm tài khoản bằn Excel">
+                <form action="{{route('user.import')}}" enctype="multipart/form-data" method="post">
+                    @csrf
+                    <input type="file" name="file" value="Thêm tài khoản bằn Excel" accept=".xlsx">
                     <input type="submit" value="tạo tài khoản">
                 </form>
 

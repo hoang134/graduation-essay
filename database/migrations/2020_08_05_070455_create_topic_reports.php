@@ -3,9 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\UserPost;
 
-class CreateUserPostsTable extends Migration
+class CreateTopicReports extends Migration
 {
     /**
      * Run the migrations.
@@ -14,11 +13,10 @@ class CreateUserPostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_posts', function (Blueprint $table) {
+        Schema::create('topic_reports', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('post_id');
-            $table->enum('type',[UserPost::TYPE_REGISTER,UserPost::TYPE_POST]);
+            $table->string('title');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateUserPostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_posts');
+        Schema::dropIfExists('topic_reports');
     }
 }

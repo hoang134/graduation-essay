@@ -24,6 +24,9 @@
                 font-size: 3.5rem;
             }
         }
+        a{
+            margin-right: 20px;
+        }
     </style>
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="{{ '/css/admin.css' }}">
@@ -56,6 +59,12 @@
                         <a class="nav-link user-menu" href="/admin/user">
                             <span data-feather="airplay"></span>
                             Tài khoản
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link topicReport-menu" href="/admin/report">
+                            <span data-feather="airplay"></span>
+                            Báo cáo
                         </a>
                     </li>
                     @can('viewany',\App\UserPost::class)

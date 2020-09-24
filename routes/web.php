@@ -35,10 +35,23 @@ Route::prefix('admin')->middleware('CheckRole')->group(function () {
         Route::get('user/edit/{id}','UserController@edit')->name('user.edit');
         Route::get('user/{id}','UserController@delete')->name('user.delete');
         Route::post('user/save/{id?}','UserController@save')->name('user.save');
-        Route::get('user/import','userController@import')->name('import');
+        Route::post('import','userController@import')->name('user.import');
 
         Route::get('list','UserPostController@index')->name('list');
         Route::get('list/delete','UserPostController@delete')->name('list.delete');
+
+        Route::get('report','TopicReportController@index')->name('topic.report');
+        Route::get('report/create','TopicReportController@create')->name('topic.report.create');
+        Route::get('report/edit','TopicReportController@edit')->name('topic.report.edit');
+        Route::get('report/delete','TopicReportController@delete')->name('topic.report.delete');
+        Route::get('report/detail','TopicReportController@detailReport')->name('topic.report.detailReport');
+        Route::get('report/download/{id}','TopicReportController@download')->name('topic.report.download');
+        Route::post('report/save/{id?}', 'TopicReportController@save')->name('topic.report.save');
+
+        Route::post('comment/create','CommentController@create')->name('comment.create');
+        Route::get('comment/{id}','CommentController@comment')->name('comment');
+
+
 });
 
 
@@ -50,11 +63,19 @@ Route::prefix('student')->middleware('CheckLogin','CheckIsStudent')->group(funct
     Route::get('information', 'StudentController@informationStudent')->name('student.information');
     Route::get('register/{user_id}/{post_id}', 'StudentController@register')->name('student.register');
     Route::get('post', 'StudentController@post')->name('student.post');
-    Route::get('post/delete', 'StudentController@deletePost')->name('post.delete');
-    Route::get('repost', 'RepostController@create')->name('repost.create');
-    Route::get('logout', 'LoginController@logout')->name('logout');
+    Route::get('post/delete', 'StudentController@deletePost')->name('student.post.delete');
+
+    Route::get('report', 'ReportController@index')->name('student.report.index');
+    Route::get('report/create/{topic_id}', 'ReportController@create')->name('student.report.create');
+    Route::get('report/eidt/{topic_id}', 'ReportController@edit')->name('student.report.edit');
+    Route::get('report/download{topic_id}', 'ReportController@download')->name('student.report.download');
+    Route::post('report/save/{id?}', 'ReportController@save')->name('student.report.save');
+
+    Route::get('comment/{topic_id}', 'CommentController@commentStudent')->name('student.comment');
+    Route::post('comment/create', 'CommentController@createCommentStudent')->name('student.comment.create');
+
 });
 
-Route::get('excel','userController@import')->name('excel');
+
 
 

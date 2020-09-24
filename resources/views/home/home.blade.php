@@ -15,6 +15,7 @@
 <body>
     <h1>Trang chủ</h1>
     <div><a href="{{route('student.information')}}" style="color: #1c7430; font-size: 25px;float: right;padding-bottom: 10px; padding-top: 20px; padding-right: 15px" >{{\Illuminate\Support\Facades\Auth::user()->name}}</a></div>
+    <div><a href="{{route('student.report.index')}}" style="color: #1c7430; font-size: 20px;float: right;padding-bottom: 10px; padding-top: 50px;">Báo cáo tuần</a></div>
     <table class="table table-striped table-sm">
         <thead>
         <tr>

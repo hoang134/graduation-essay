@@ -61,5 +61,9 @@ class User extends Authenticatable
         return $this->hasMany('App\Messenger','user_id','id');
     }
 
+    public function reports()
+    {
+        return $this->hasMany('App\Report','user_id','id');
+    }
 
 }

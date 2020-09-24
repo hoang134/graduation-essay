@@ -7,6 +7,8 @@ use App\UserPost;
 use Illuminate\Http\Request;
 use App\Imports\UsersImport;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Storage;
+
 class UserController extends Controller
 {
     protected $activeMenu = "user-menu";
@@ -42,9 +44,9 @@ class UserController extends Controller
 
     public function delete(Request $request ,$id)
     {
-       $user = User::find($request->id);
+        $user = User::find($request->id);
         $this->authorize('delete', $user);
-       $postIds = $user->posts->pluck('id');
+        $postIds = $user->posts->pluck('id');
         $user->posts()->delete();
         UserPost::whereIn('post_id', $postIds)->delete();
         $user->delete();
@@ -103,10 +105,20 @@ class UserController extends Controller
        }
     }
 
-    public function import()
+    public function import(Request $request)
     {
-        Excel::import(new UsersImport, 'Book1.xlsx');
+        $request->validate([
+            'file' => 'required'
+        ]);
 
-        return redirect('/')->with('success', 'All good!');
+        if($request->hasFile('file'))
+        {
+            $file=$request->file('file');
+            $path = Storage::put('listUser', $file);
+
+            Excel::import(new UsersImport, $path);
+        }
+
+        return redirect()->route('user')->with('success', 'thêm tài khoản thành công');
     }
 }

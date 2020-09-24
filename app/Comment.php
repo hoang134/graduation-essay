@@ -12,6 +12,12 @@ class Comment extends Model
 
     }
 
+    function report()
+    {
+        return $this->belongsTo('App\Report', 'report_id', 'id');
+
+    }
+
     function commentReplys()
     {
         return $this->hasMany('App\CommentReply','comment_id','id');
