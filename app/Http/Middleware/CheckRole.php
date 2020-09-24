@@ -19,10 +19,12 @@ class CheckRole
     {
         if (!Auth::check())
             return redirect()->route('home');
+        if (Auth::user()->role == User::ROLE_SUPER_ADMIN)
+            return $next($request);
         if (Auth::user()->role == User::ROLE_ADMIN)
             return $next($request);
         else
-             return redirect()->route('home');;
+             return redirect()->route('home');
 
     }
 }

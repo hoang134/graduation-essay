@@ -16,8 +16,8 @@ class CreateUserPostsTable extends Migration
     {
         Schema::create('user_posts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('user_id');
-            $table->string('post_id');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('post_id');
             $table->enum('type',[UserPost::TYPE_REGISTER,UserPost::TYPE_POST]);
             $table->timestamps();
         });

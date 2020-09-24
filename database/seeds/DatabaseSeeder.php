@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
          $this->call(UserSeeder::class);
          $this->call(PostSeeder::class);
          $this->call(UserPostSeeder::class);
+         $this->call(TopicReportSeeder::class);
          $this->call(ReportSeeder::class);
          $this->call(MessengerSeeder::class);
          $this->call(MessengerRelySeeder::class);

@@ -15,9 +15,11 @@ class CreateReportsTable extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_post_id');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('topic_report_id');
             $table->string('title');
             $table->string('content');
+            $table->string('path');
             $table->timestamps();
         });
     }

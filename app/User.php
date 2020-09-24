@@ -3,12 +3,20 @@
 namespace App;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
 
 class User extends Authenticatable
 {
+//    use SoftDeletes;
+    const ROLE_SUPER_ADMIN = "SUADMIN";
+    const ROLE_ADMIN = "ADMIN";
+    const ROLE_USER = "USER";
+    const GENDER_MALE = "Nam";
+    const  GENDER_FEMALE = "Nữ";
+
     use Notifiable;
 
     /**
@@ -17,7 +25,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','role','gender','code','class','birthday',
     ];
 
     /**
@@ -53,8 +61,9 @@ class User extends Authenticatable
         return $this->hasMany('App\Messenger','user_id','id');
     }
 
-    const ROLE_ADMIN = "ADMIN";
-    const ROLE_USER = "USER";
-    const GENDER_MALE = "MALE";
-    const GENDER_FEMALE = "FEMALE";
+    public function reports()
+    {
+        return $this->hasMany('App\Report','user_id','id');
+    }
+
 }

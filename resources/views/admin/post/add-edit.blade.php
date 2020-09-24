@@ -24,7 +24,7 @@
                         <label for="quantity" class="col-sm-2 col-form-label">Nội dung</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="contents" name="contents"
-                                   value="{{ old('phone', isset($post) ? $post->content: '') }}">
+                                   value="{{ old('contents', isset($post) ? $post->content: '') }}">
 
                             @if ($errors->has('phone'))
                                 <small class="form-text text-danger">{{ $errors->first('phone') }}</small>
@@ -35,6 +35,16 @@
                     <div class="form-group row justify-content-end">
                         <button type="submit" class="btn btn-primary">Lưu</button>
                     </div>
+
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                 </form>
             </div>
         </div>

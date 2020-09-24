@@ -3,7 +3,10 @@
 
 @section('content')
     <h2>Quản lý tài khoản</h2>
-    <a href="{{route('user.create')}}">Thêm đề tài khoản</a>
+    @can('create',\App\User::class)
+        <a href="{{route('user.create')}}">Thêm  tài khoản</a>
+
+    @endcan
     <div class="table-responsive">
         <table class="table table-striped table-sm">
             <thead>
@@ -29,8 +32,18 @@
                     <td>{{$user->email}}</td>
                     <td>{{$user->class}}</td>
                     <td>{{$user->gender}}</td>
-                    <td><a href="{{route('user.edit',['id'=>$user->id])}}">Sửa</a></td>
-                    <td><a href="{{route('user.delete',['id'=>$user->id])}}">Xóa</a></td>
+                    <td>
+                        @can('update', $user)
+                            <a href="{{route('user.edit',['id'=>$user->id])}}">Sửa</a>
+                        @endcan
+                    </td>
+
+                    <td>
+                        @can('delete',$user)
+                            <a href="{{route('user.delete',['id'=>$user->id])}}">Xóa</a>
+                        @endcan
+                    </td>
+
                 </tr>
             @endforeach
             </tbody>

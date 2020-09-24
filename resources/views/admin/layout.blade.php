@@ -24,6 +24,9 @@
                 font-size: 3.5rem;
             }
         }
+        a{
+            margin-right: 20px;
+        }
     </style>
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="{{ '/css/admin.css' }}">
@@ -58,6 +61,20 @@
                             Tài khoản
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link topicReport-menu" href="/admin/report">
+                            <span data-feather="airplay"></span>
+                            Báo cáo
+                        </a>
+                    </li>
+                    @can('viewany',\App\UserPost::class)
+                        <li class="nav-item">
+                            <a class="nav-link list-post-menu" href="/admin/list">
+                                <span data-feather="airplay"></span>
+                                Danh sách sinh viên đăng ký
+                            </a>
+                        </li>
+                    @endcan
                 </ul>
 
                 <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">

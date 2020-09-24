@@ -12,10 +12,6 @@ class ReportSeeder extends Seeder
      */
     public function run()
     {
-        $report = new Report();
-        $report->user_post_id= 1;
-        $report->title = "bao cao 1";
-        $report->content = "bao cao tuan 1";
-        $report->save();
+
     }
 }
