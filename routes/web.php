@@ -50,7 +50,16 @@ Route::prefix('admin')->middleware('CheckRole')->group(function () {
 
         Route::post('comment/create','CommentController@create')->name('comment.create');
         Route::get('comment/{id}','CommentController@comment')->name('comment');
+        Route::get('comment/delete/{id}','CommentController@deleteComment')->name('comment.delete');
 
+        Route::get('verify','VerifyPostController@index')->name('verify');
+        Route::get('verify/list/{id}','VerifyPostController@list')->name('verify.list');
+        Route::get('verify/evaluate/{id}','VerifyPostController@evaluate')->name('verify.evaluate');
+
+        Route::get('confirm','ConfirmPostController@index')->name('confirm');
+        Route::get('confirm/list/{id}','ConfirmPostController@list')->name('confirm.list');
+        Route::get('confirm/evaluate/{id}','ConfirmPostController@evaluate')->name('confirm.evaluate');
+        Route::get('confirm/detail/{id}','ConfirmPostController@detail')->name('confirm.detail');
 
 });
 
@@ -73,6 +82,8 @@ Route::prefix('student')->middleware('CheckLogin','CheckIsStudent')->group(funct
 
     Route::get('comment/{topic_id}', 'CommentController@commentStudent')->name('student.comment');
     Route::post('comment/create', 'CommentController@createCommentStudent')->name('student.comment.create');
+    Route::get('comment/delete/{id}','CommentController@deleteComment')->name('student.comment.delete');
+
 
 });
 

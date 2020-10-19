@@ -19,6 +19,7 @@ class CreateUserPostsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('post_id');
             $table->enum('type',[UserPost::TYPE_REGISTER,UserPost::TYPE_POST]);
+            $table->string('status')->default(UserPost::STATUS_ELIMINATED);
             $table->timestamps();
         });
     }

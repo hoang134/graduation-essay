@@ -75,6 +75,23 @@
                             </a>
                         </li>
                     @endcan
+
+                    @can('lecturers',\App\User::class)
+                        <li class="nav-item">
+                            <a class="nav-link verify-menu" href="/admin/verify">
+                                <span data-feather="airplay"></span>
+                                Xác nhận khóa luận
+                            </a>
+                        </li>
+                    @endcan
+                    @can('assessor',\App\User::class)
+                    <li class="nav-item">
+                        <a class="nav-link confirm-menu" href="/admin/confirm">
+                            <span data-feather="airplay"></span>
+                            Duyệt khóa luận
+                        </a>
+                    @endcan
+                    </li>
                 </ul>
 
                 <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">

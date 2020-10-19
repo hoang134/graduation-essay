@@ -77,5 +77,14 @@ class UserSeeder extends Seeder
         $user->role =User::ROLE_USER ;
         $user->save();
 
+        $user = new User();
+        $user->name = "khoa CNTT";
+
+        $user->email = "cntt@gmail.com";
+        $user->password = bcrypt('123456');
+        $user->class = 'K62-L';
+        $user->role =User::ROLE_ASSESSOR ;
+        $user->save();
+
     }
 }

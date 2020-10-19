@@ -13,6 +13,7 @@ class User extends Authenticatable
 //    use SoftDeletes;
     const ROLE_SUPER_ADMIN = "SUADMIN";
     const ROLE_ADMIN = "ADMIN";
+    const ROLE_ASSESSOR = "ASSESSOR";
     const ROLE_USER = "USER";
     const GENDER_MALE = "Nam";
     const  GENDER_FEMALE = "Nữ";

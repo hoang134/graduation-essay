@@ -43,6 +43,16 @@ class UserPolicy
         return $user->role == User::ROLE_SUPER_ADMIN;
     }
 
+    public function lecturers(User $user)
+    {
+        return $user->role == User::ROLE_ADMIN;
+    }
+
+    public function assessor(User $user)
+    {
+        return $user->role == User::ROLE_ASSESSOR;
+    }
+
     /**
      * Determine whether the user can update the model.
      *

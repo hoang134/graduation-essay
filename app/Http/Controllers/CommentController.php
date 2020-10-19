@@ -15,7 +15,12 @@ class CommentController extends Controller
         $comments = Report::find($request->id)->comments;
 
         foreach ($comments as $comment){
-            echo"<p><lable style='color: #0056b3'>{$comment->user->name}</lable><br> $comment->content </p>";
+            echo"<label><lable style='color: #0056b3'>{$comment->user->name}</lable><br> $comment->content
+                </label>";
+            if($comment->user->id == Auth::user()->id)
+                echo "<a data-id='{$comment->id}' href=''  data-report='{$request->id}' class='delete'>xóa</a>";
+            echo "<br>
+            ";
         }
 
     }
@@ -31,16 +36,30 @@ class CommentController extends Controller
         $comment->save();
     }
 
+    public function deleteComment(Request $request)
+    {
+
+        $comment = Comment::find($request->id)->delete();
+    }
+
     public function commentStudent(Request $request)
     {
        $report =  DB::table('reports')->where('user_id',Auth::user()->id)
            ->where('topic_report_id',$request->topic_id)->get();
-        $comments=Report::find($report->first()->id)->comments;
+        $comments = Report::find($report->first()->id)->comments;
 
         foreach ($comments as $comment){
-            echo"<p><lable style='color: #0056b3'>{$comment->user->name}</lable><br> $comment->content </p>";
+            echo"<label><lable style='color: #0056b3'>{$comment->user->name}</lable><br> $comment->content
+                </label>";
+            if($comment->user->id == Auth::user()->id)
+                echo "<a data-id = '{$comment->id}' href='' data-topic = '{$request->topic_id}'  class='delete'>xóa</a>";
+            echo "<br>
+            ";
         }
     }
+
+
+
 
     public function createCommentStudent(Request $request)
     {

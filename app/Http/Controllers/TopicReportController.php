@@ -60,7 +60,6 @@ class TopicReportController extends Controller
     {
         $reports = TopicReport::find($request->id)->reports;
 
-
         return view('admin.report.detail-report',[
             'reports'=>$reports
             ]);
