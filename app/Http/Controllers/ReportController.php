@@ -13,6 +13,11 @@ class ReportController extends Controller
     public function index()
     {
         $post = Auth::user()->posts->first();
+        if($post == null)
+        {
+            return 0;
+        }
+
 
         $isReports = ['id' => 'status'];
 

@@ -24,6 +24,7 @@ class ConfirmPostController extends Controller
 
     public function list(Request $request)
     {
+
         $post = Post::find($request->id);
         $users = $post->students;
 

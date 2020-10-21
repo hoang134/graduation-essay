@@ -25,12 +25,13 @@ class StudentController extends Controller
 
         $isUser = DB::table('user_posts')->where('user_id',"$request->user_id")->get();
         if(!$isUser->isEmpty())
-            return 0;
+            return redirect()->route('home')->with('error','Bạn đã đăng ký');
+
         $userpost = New UserPost();
         $userpost->user_id =$request->user_id;
         $userpost->post_id = $request->post_id;
         $userpost->save();
-        return redirect()->route('home');
+        return redirect()->route('home')->with('success','Đăng ký thành công');
     }
 
     public function post()
