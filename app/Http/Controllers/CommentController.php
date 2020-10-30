@@ -44,8 +44,8 @@ class CommentController extends Controller
 
     public function commentStudent(Request $request)
     {
-       $report =  DB::table('reports')->where('user_id',Auth::user()->id)
-           ->where('topic_report_id',$request->topic_id)->get();
+        $report =  DB::table('reports')->where('user_id',Auth::user()->id)
+            ->where('topic_report_id',$request->topic_id)->get();
         $comments = Report::find($report->first()->id)->comments;
 
         foreach ($comments as $comment){

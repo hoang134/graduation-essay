@@ -86,11 +86,17 @@
                     @if(!isset($user))
                         <div>
                             <span style="font-size: 15px;margin-left: 200px;" >Sinh viên</span>
+
                             <input type="radio" name="role" id="male" value="USER" >
                             <span style="font-size: 15px;">giảng viên</span>
                             <input type="radio" name="role" id="admin" value="ADMIN">
                             <span style="font-size: 15px;" >Khoa CNTT</span>
                             <input type="radio" name="role" id="male" value="ASSESSOR" >
+
+                            <input type="radio" name="role" id="male" value="user" >
+                            <span style="font-size: 15px;">giảng viên</span>
+                            <input type="radio" name="role" id="admin" value="admin">
+
                         </div>
                     @endif
                     <div class="form-group row justify-content-end">

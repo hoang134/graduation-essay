@@ -6,9 +6,12 @@ class UserPost extends Model
 {
     const TYPE_POST = "Tạo";
     const TYPE_REGISTER = "Đăng ký";
+
     const STATUS_QUALIFIED  = "Đạt";
     const STATUS_ELIMINATED = "Chưa đạt";
     const STATUS_REQUEST = "Đề xuất";
+
+
 
 
     public function reports()

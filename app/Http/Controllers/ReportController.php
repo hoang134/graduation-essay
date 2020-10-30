@@ -13,11 +13,15 @@ class ReportController extends Controller
     public function index()
     {
         $post = Auth::user()->posts->first();
+
         if($post == null)
         {
-            return 0;
+            return session('empty','Chưa có đề bài báo cáo');
         }
 
+
+
+        $isExpireds = ['id'=>'status'];
 
         $isReports = ['id' => 'status'];
 
@@ -27,19 +31,29 @@ class ReportController extends Controller
             $isReport = DB::table('Reports')->where('topic_report_id', $topicReport->id)
                 ->where('user_id',Auth::user()->id)->get();
 
+            if($topicReport->deadline > date('Y-m-d'))
+            {
+                array_push($isExpireds, ["$topicReport->id" => 'false']);
+            }
+            else
+            {
+                array_push($isExpireds, ["$topicReport->id" => 'true']);
+            }
+
             if ($isReport->isEmpty()) {
                 array_push($isReports, ["$topicReport->id" => 'empty']);
-            } else {
+            }
+            else {
                 array_push($isReports, ["$topicReport->id" => 'isset']);
             }
         }
 
-        //dd($isReports);
 
         return view('student.report.index', [
             'topicReports' => $topicReports,
             'post' => $post,
-            'isReports' => $isReports
+            'isReports' => $isReports,
+            'isExpireds' => $isExpireds
         ]);
     }
 
@@ -77,6 +91,9 @@ class ReportController extends Controller
             $path = Storage::put('report', $file);
             $reprot->path = $path;
             $reprot->save();
+
+            return redirect()->route('home');
+
         }
 
         else {
@@ -95,6 +112,10 @@ class ReportController extends Controller
             }
 
             $report->save();
+
+
+            return redirect()->route('home');
+
         }
 
     }

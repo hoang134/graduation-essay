@@ -35,7 +35,7 @@
                         <div name ="data" class="{{$report->id}}"></div>
                         <br>
                         <form id="form-{{$report->id}}" method="post" action="{{route('comment.create')}}">
-                           @csrf
+                            @csrf
                             <textarea  type="text" name="contents" class="contents form-control"></textarea>
                             <input name="report_id" type=hidden value="{{$report->id}}">
                             <button  class="btn btn-success save-data" value="{{$report->id}}">Gửi</button>
@@ -52,38 +52,29 @@
 @endsection
 @section('script')
     <script>
-
         $(document).ready(function(){
-
             // $(".all").hide();
-
-
             $(".click").click(function() {
                 let id =$(this).val();
-
                 $("#"+id).toggle();
                 $.ajax({
                     type:'GET',
                     url: "/admin/comment/" +id,
                     success:function (data) {
-                      $("."+id).html(data);
+                        $("."+id).html(data);
                     }
                 });
-
-
             });
             $(".save-data").click(function (event) {
                 event.preventDefault();
                 let idForm = $(this).parent().attr('id');
                 let idReport = $(this).val();
-
                 $.ajax({
                     url:"/admin/comment/create",
                     type:"POST",
                     data:$("#"+idForm).serialize(),
                     success:function () {
                         $(".contents").val('');
-
                         $.ajax({
                             type:'GET',
                             url:"/admin/comment/"+ idReport,
@@ -94,11 +85,9 @@
                     }
                 });
             });
-
             $(document).on('click', '.delete', function (e) {
                 e.preventDefault();
                 let idReport =  $(this).data('report');
-
                 let id = $(this).data('id');
                 $.ajax({
                     type:'GET',
@@ -114,9 +103,7 @@
                     }
                 })
                 console.log(id);
-
             });
         });
-
     </script>
 @endsection

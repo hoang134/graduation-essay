@@ -44,6 +44,7 @@ class UserPostSeeder extends Seeder
         $userPost->id = 5;
         $userPost->user_id = 5;
         $userPost->post_id = 1;
+        $userPost->status = UserPost::STATUS_ELIMINATED;
         $userPost->type = UserPost::TYPE_REGISTER;
         $userPost->save();
 
@@ -51,6 +52,7 @@ class UserPostSeeder extends Seeder
         $userPost->id = 6;
         $userPost->user_id = 6;
         $userPost->post_id = 2;
+        $userPost->status = UserPost::STATUS_ELIMINATED;
         $userPost->type = UserPost::TYPE_REGISTER;
         $userPost->save();
 
@@ -58,6 +60,7 @@ class UserPostSeeder extends Seeder
         $userPost->id = 7;
         $userPost->user_id = 7;
         $userPost->post_id = 3;
+        $userPost->status = UserPost::STATUS_ELIMINATED;
         $userPost->type = UserPost::TYPE_REGISTER;
         $userPost->save();
     }

@@ -8,9 +8,7 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function index(){
-        $posts = Post::all();
-        return view('home.home',[
-            'posts'=>$posts
-        ]);
+
+        return view('home.home');
     }
 }

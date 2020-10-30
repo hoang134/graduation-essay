@@ -1,23 +1,40 @@
-<!doctype html>
-<html lang="en">
+
+@extends('home.home')
+@section('title', 'Thông tin đề tài')
+
+@section('content')
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <style type="text/css">
+        th,td {
+            border-left: 1px solid #dee2e6;
+            border-right: 1px solid #dee2e6;
+        }
+    </style>
 </head>
 <body>
-    <h1>Thông tin đề tài khóa luận</h1>
-    @if(isset($user))
-        <div style="font-size: 20px">
-            <p>Tên đề tài: {{$user->posts->first()->title}}</p>
-            <p>Giảng viên: {{$user->posts->first()->lecturer->first()->name}}</p>
-            <p>Nội dung để tài: {{$user->posts->first()->content}}</p>
-            <p><a href="{{route('student.post.delete')}}">hủy đăng ký</a></p>
+    <div>
+        <div>
+            @if(isset($user))
+            <h1>Đề tài đã chọn</h1>
+            <table class="table table-striped table-sm">
+                <tr>
+                    <th scope="col">Tên đề tài</th>
+                    <th scope="col">Giảng viên</th>
+                    <th scope="col">Nội dung đề tài</th>
+                    <th scope="col">Thực hiện</th>
+                </tr>
+                <tr>
+                    <td>{{$user->posts->first()->title}}</td>
+                    <td>{{$user->posts->first()->lecturer->first()->name}}</td>
+                    <td>{{$user->posts->first()->content}}</td>
+                    <td><a href="{{route('student.post.delete')}}">Hủy đăng ký</a></td>
+                </tr>
+            </table>
+            @else
+            <p>Bạn chưa dăng ký khóa luận. <a href="/student/viewpost">Đăng ký</a> </p>
+            @endif
         </div>
-    @else
-        <p>Bạn chưa dăng ký khóa luận. <a href="{{route('home')}}">Đăng ký</a> </p>
-    @endif
+    </div>
 </body>
-</html>
+@endsection
+

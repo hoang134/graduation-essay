@@ -16,10 +16,12 @@ class Post extends Model
         return $this->users()->wherePivot('type', UserPost::TYPE_POST);
     }
 
+
     public function students()
     {
         return $this->users()->wherePivot('type', UserPost::TYPE_REGISTER);
     }
+
 
     public function topicReports()
     {

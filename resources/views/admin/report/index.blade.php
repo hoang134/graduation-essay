@@ -14,6 +14,7 @@
                 <th>Id</th>
                 <th>tên báo cáo</th>
                 <th>tên đề tài</th>
+                <th>thời hạn</th>
                 <th>giảng viên</th>
                 <th>thực hiện</th>
             </tr>
@@ -25,6 +26,7 @@
                     <td>{{$topicReport->id}}</td>
                     <td>{{$topicReport->title}}</td>
                     <td>{{\App\Post::find($topicReport->post_id)->title}}</td>
+                    <td>{{$topicReport->deadline}}</td>
                     <td>{{\Illuminate\Support\Facades\Auth::user()->name}}</td>
                     <td>
                             <a href="{{route('topic.report.edit',['id'=>$topicReport->id])}}">Sửa</a>

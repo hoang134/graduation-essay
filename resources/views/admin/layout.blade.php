@@ -76,6 +76,7 @@
                         </li>
                     @endcan
 
+
                     @can('lecturers',\App\User::class)
                         <li class="nav-item">
                             <a class="nav-link verify-menu" href="/admin/verify">
@@ -92,6 +93,7 @@
                         </a>
                     @endcan
                     </li>
+
                 </ul>
 
                 <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
@@ -131,9 +133,9 @@
     toastr.success('{{ session('success') }}');
     @endif
 
-    @if(isset($error))
-    toastr.error('{{ $error }}');
-    @endif
+{{--    @if(session('error'))--}}
+{{--    toastr.error('123');--}}
+{{--    @endif--}}
 
 </script>
 @yield('script')

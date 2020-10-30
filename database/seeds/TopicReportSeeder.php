@@ -16,24 +16,28 @@ class TopicReportSeeder extends Seeder
          $topicReport->id = 1;
          $topicReport->post_id = 1;
          $topicReport->title = 'báo cáo tuần 1';
+        $topicReport->deadline = '2020-10-24';
          $topicReport->save();
 
         $topicReport = new TopicReport();
         $topicReport->id = 2;
         $topicReport->post_id = 2;
         $topicReport->title = 'báo cáo tuần 1';
+        $topicReport->deadline = '2020-10-24';
         $topicReport->save();
 
         $topicReport = new TopicReport();
         $topicReport->id = 3;
         $topicReport->post_id = 3;
         $topicReport->title = 'báo cáo tuần 1';
+        $topicReport->deadline = '2020-10-24';
         $topicReport->save();
 
         $topicReport = new TopicReport();
         $topicReport->id = 4;
         $topicReport->post_id = 4;
         $topicReport->title = 'báo cáo tuần 1';
+        $topicReport->deadline = '2020-10-24';
         $topicReport->save();
     }
 }

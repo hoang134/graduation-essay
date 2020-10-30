@@ -1,51 +1,139 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-    <title>Home</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>@yield('title')</title>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{{ '/css/libs/bootstrap.min.css' }}">
+    <link rel="stylesheet" href="{{ '/css/libs/bootstrap-select.css' }}">
+    <link rel="stylesheet" href="{{ '/css/libs/toastr.min.css' }}">
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+        a{
+            margin-right: 20px;
+        }
+        ul.droplinemenu {
+            position: relative;
+            padding-top: 5px;
+            padding-bottom:5px;
+            color: white;
+        }
+        ul.droplinemenu > li {
+            display: inline;
+            height: 20px;
+            padding: 5px 10px;
+            list-style-type: none;
+            cursor:pointer;
+        }
+        ul.droplinemenu  > li > ul {
+            display: none;
+            position:absolute;
+            top:29px;
+            left:0px;
+            padding-top: 5px;
+            padding-bottom:5px;
+            background:#343a40;
+        }
+        ul.droplinemenu  > li:hover > ul  {
+            display: block;
+        }
+        ul.droplinemenu  > li > ul > li {
+            display: inline;
+            cursor:pointer;
+            list-style-type: none;
+        }
+        .droplinemenu li ul li:hover {
+            background-color: darkblue;
+        }
+    </style>
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="{{ '/css/admin.css' }}">
 </head>
 <body>
-    <h1>Trang chủ</h1>
-    <div><a href="{{route('student.information')}}" style="color: #1c7430; font-size: 25px;float: right;padding-bottom: 10px; padding-top: 20px; padding-right: 15px" >{{\Illuminate\Support\Facades\Auth::user()->name}}</a></div>
-    <div><a href="{{route('student.report.index')}}" style="color: #1c7430; font-size: 20px;float: right;padding-bottom: 10px; padding-top: 50px;">Báo cáo tuần</a></div>
-    <table class="table table-striped table-sm">
-        <thead>
-        <tr>
-            <th scope="col">id</th>
-            <th scope="col">Giảng viên</th>
-            <th scope="col">Tên đề tài</th>
-            <th scope="col">Nội dung</th>
-            <th scope="col">Thực hiện</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach($posts as $post)
-        <tr>
-            <td>{{$post->id}}</td>
-            <td>{{$post->title}}</td>
-            <td>{{$post->lecturer->first()->name}}</td>
-            <td>{{$post->content}}</td>
-            <td><a href="{{route('student.register',['user_id'=>\Illuminate\Support\Facades\Auth::user()->id,'post_id'=>$post->id])}}">Đăng ký</a></td>
-        </tr>
-        @endforeach
-        </tbody>
-    </table>
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
+<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="{{route('post')}}">Trang chủ</a>
+    <a class="col-sm-3 col-md-4 mr-0" style="color:white;">Hệ thống quản lý khóa luận tốt nghiệp</a>
+    <ul class="navbar-nav px-3">
+        <ul class="droplinemenu">
+            <li>
+                <a>Chức năng</a>
+                <ul>
+                    <li>
+                        <a active href="{{route('student.information')}}" style="color: white;text-decoration: none;"><span data-feather="user"></span> {{\Illuminate\Support\Facades\Auth::user()->name}}</a>
+                    </li>
+                    <li>
+                        <a href="/login" style="color: white;text-decoration: none;"><span data-feather="power"></span> Logout</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </ul>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+            <div class="sidebar-sticky">
+                <ul class="nav flex-column">
+
+                    <li class="nav-item">
+                        <a class="nav-link post-menu" href="/student/viewpost">
+                            <span data-feather="airplay"></span>
+                            Đề Tài
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link user-menu" href="/student/post">
+                            <span data-feather="airplay"></span>
+                            Đề tài đã đăng ký
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link topicReport-menu" href="/student/report">
+                            <span data-feather="airplay"></span>
+                            Báo cáo tuần
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            @yield('content')
+        </main>
+    </div>
+</div>
+<script src="{{ '/js/libs/jquery-3.4.1.min.js' }}"></script>
+<script src="{{ '/js/libs/bootstrap.bundle.min.js' }}"></script>
+<script src="{{ '/js/libs/feather.min.js' }}"></script>
+<script src="{{ '/js/libs/toastr.min.js' }}"></script>
+<script>
+    feather.replace();
+    @if(isset($activeMenu))
+    $('.{{ $activeMenu }}').addClass('active');
     @endif
+    @if(session('success'))
+    toastr.success('{{ session('success') }}');
+    @endif
+    @if(session('error'))
+    toastr.error('{{ session('error') }}');
+    @endif
+</script>
+@yield('script')
 </body>
 </html>

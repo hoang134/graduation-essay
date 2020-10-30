@@ -6,6 +6,7 @@ use App\Comment;
 use App\Report;
 use App\TopicReport;
 use App\User;
+use App\UserPost;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -60,6 +61,7 @@ class TopicReportController extends Controller
     {
         $reports = TopicReport::find($request->id)->reports;
 
+
         return view('admin.report.detail-report',[
             'reports'=>$reports
             ]);
@@ -77,20 +79,23 @@ class TopicReportController extends Controller
 
     public function save(Request $request)
     {
+
         $request->validate([
-                'title'=>'required'
+                'title'=>'required',
             ]
         );
         if(!isset($request->id)){
             $topicReport = new TopicReport();
             $topicReport->post_id = $request->post_id;
             $topicReport->title = $request->title;
+            $topicReport->deadline = $request->deadline;
             $topicReport->save();
             return redirect()->route('topic.report')->with('success','thêm thành công');
         }
         else{
             $topicReport = TopicReport::find($request->id);
             $topicReport->title = $request->title;
+            $topicReport->deadline = $request->deadline;
             $topicReport->save();
             return redirect()->route('topic.report')->with('success','Sửa thành công');
         }

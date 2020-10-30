@@ -16,6 +16,7 @@
                                    value="{{ old('title', isset($topicReport) ? $topicReport->title : '') }}">
                         </div>
                     </div>
+
                     @if(!isset($topicReport))
                         <div class="form-group row">
                         <label for="code" class="col-sm-2 col-form-label">chọn đề tài</label>
@@ -29,6 +30,13 @@
                         </div>
                     @endif
 
+                    <div class="form-group row">
+                        <label for="code" class="col-sm-2 col-form-label">hạn đăng ký</label>
+                        <div class="col-sm-10">
+                            <input type="date" class="form-control" id="deadline" name="deadline"
+                                   value="{{ old('deadline', isset($topicReport) ? $topicReport->deadline : '') }}">
+                        </div>
+                    </div>
 
                     <div class="form-group row justify-content-end">
                         <button type="submit" class="btn btn-primary">Lưu</button>

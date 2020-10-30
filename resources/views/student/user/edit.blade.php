@@ -1,27 +1,54 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
+
+@extends('home.home')
+@section('title', 'đề tài')
+
+@section('content')
 <body>
-    <h1>Sửa thông tin tài khoản</h1>
+    <center><h1>Sửa thông tin tài khoản</h1></center>
+    <br>
     <div style="font-size: 20px">
         <form action="{{route('student.save',['id'=>$user->id])}}" method="post">
             @csrf
-            Tên:<input type="text" name="name" value="{{$user->name}}"><br>
-            Ngày sinh:<input type="text" name="birthday" value=" {{$user->birthday}}"><br>
-            Mã số sinh viên:<input type="text" name="code" value=" {{$user->code}}"><br>
-            Lớp:<input type="text" name="class" value="{{$user->class}}"><br>
-            Giới tính:<input style="margin-right: 10px" type="radio" name="gender" value="Nam">Nam
+            <label>Tên:</label>
+            <input type="text" name="name" value="{{$user->name}}"><br>
+            <label>Ngày sinh:</label>
+            <input type="text" name="birthday" value=" {{$user->birthday}}"><br>
+            <label>Mã số sinh viên:</label>
+            <input type="text" name="code" value=" {{$user->code}}"><br>
+            <label>Lớp:</label>
+            <input type="text" name="class" value="{{$user->class}}"><br>
+            <label>Giới tính:</label>
+            <input style="margin-right: 10px" type="radio" name="gender" value="Nam">Nam
                       <input type="radio" name="gender" value="Nữ">Nữ<br>
-            Mật khẩu mới:<input type="text" name="password" value=""><br>
-            Xác nhận khẩu mới:<input type="text" name="password_confirmation" value=""><br>
+            <label>Mật khẩu mới:</label>
+            <input type="text" name="password" value=""><br>
+            <label>Xác nhận khẩu mới:</label>
+            <input type="text" name="password_confirmation" value=""><br>
+
             <input type="submit" value="Lưu">
         </form>
     </div>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 </body>
-</html>
+
+
+
+
+<style type="text/css">
+    label {
+        width: 15%;
+    }
+    input[type=text] {
+        width: 50%;
+    }
+</style>
+@endsection
+

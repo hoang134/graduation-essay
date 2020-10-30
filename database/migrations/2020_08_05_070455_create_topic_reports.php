@@ -17,6 +17,7 @@ class CreateTopicReports extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('post_id');
             $table->string('title');
+            $table->dateTime('deadline');
             $table->timestamps();
         });
     }

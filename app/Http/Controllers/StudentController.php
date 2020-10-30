@@ -12,11 +12,20 @@ use PhpParser\Node\Expr\New_;
 
 class StudentController extends Controller
 {
+    public function viewpost()
+    {
+        $posts = Post::all();
+        return view('student.post.viewpost', [
+            'posts'=>$posts
+        ]);
+    }
+
     public function informationStudent()
     {
+
         $user = Auth::user();
         return view('student.user.information',[
-           'user'=>$user
+            'user'=>$user
         ]);
     }
 
@@ -24,8 +33,10 @@ class StudentController extends Controller
     {
 
         $isUser = DB::table('user_posts')->where('user_id',"$request->user_id")->get();
-        if(!$isUser->isEmpty())
-            return redirect()->route('home')->with('error','Bạn đã đăng ký');
+        if(!$isUser->isEmpty()){
+             return redirect()->route('student.post.viewpost')->with('error','Đăng ký thất bại');
+        }
+
 
         $userpost = New UserPost();
         $userpost->user_id =$request->user_id;

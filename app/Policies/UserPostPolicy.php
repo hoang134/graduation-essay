@@ -18,7 +18,7 @@ class UserPostPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->role == User::ROLE_SUPER_ADMIN;
+        return $user->role != User::ROLE_ADMIN;
     }
 
     /**
