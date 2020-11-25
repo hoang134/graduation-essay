@@ -7,6 +7,7 @@ use App\User;
 use App\UserPost;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use PhpParser\Node\Expr\New_;
 
 class PostController extends Controller
@@ -36,6 +37,31 @@ class PostController extends Controller
             'activeMenu'=>$this->activeMenu
         ]);
 
+    }
+
+    public function deadline()
+    {
+        $this->activeMenu = "deadline-menu";
+        $posts = Post::all();
+        return view('admin.post.deadline', [
+            'posts'=>$posts,
+            'activeMenu'=>$this->activeMenu
+        ]);
+
+    }
+
+    public function saveDeadline( Request $request)
+    {
+        if (isset($request->id))
+        {
+            $post = Post::find($request->id);
+            $post->deadline = $request->date;
+            $post->save();
+        }
+        else
+        {
+            DB::table('posts')->update(array('deadline' => "$request->date"));
+        }
     }
 
     public function delete(Request $request){
@@ -72,7 +98,7 @@ class PostController extends Controller
 
             $userPost->save();
 
-            return redirect()->route('post')->with('success', 'Tạo đề tài thành công!');;
+            return redirect()->route('post')->with('success', 'Tạo đề tài thành công!');
         }
         else
         {

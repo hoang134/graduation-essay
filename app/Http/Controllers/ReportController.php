@@ -119,6 +119,7 @@ class ReportController extends Controller
         }
 
     }
+
     public function download( Request $request)
     {
         $report = DB::table('reports')->where('user_id',Auth::user()->id)->where('topic_report_id',$request->topic_id)->get();

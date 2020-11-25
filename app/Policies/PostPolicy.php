@@ -30,10 +30,12 @@ class PostPolicy
      */
     public function view(User $user, Post $post)
     {
-        if ($user->role = User::ROLE_SUPER_ADMIN)
+        if ($user->role == User::ROLE_SUPER_ADMIN)
             return true;
         return $user->id == $post->users->first()->id;
     }
+
+
 
     /**
      * Determine whether the user can create models.

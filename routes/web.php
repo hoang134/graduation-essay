@@ -30,6 +30,9 @@ Route::prefix('admin')->middleware('CheckRole')->group(function () {
     Route::get('post/delete/{id}','PostController@delete')->name('post.delete');
     Route::post('post/save/{id?}','PostController@save')->name('post.save');
 
+    Route::get('post/deadline','PostController@deadline')->name('post.deadline');
+    Route::get('post/saveDeadline/{id?}','PostController@saveDeadline')->name('post.saveDeadline');
+
     Route::get('user','UserController@index')->name('user');
     Route::get('user/create','UserController@create')->name('user.create');
     Route::get('user/edit/{id}','UserController@edit')->name('user.edit');

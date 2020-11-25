@@ -43,6 +43,11 @@ class UserPolicy
         return $user->role == User::ROLE_SUPER_ADMIN;
     }
 
+    public function viewReport(User $user)
+    {
+       return  $user->role == User::ROLE_ADMIN;
+
+    }
 
     public function lecturers(User $user)
     {

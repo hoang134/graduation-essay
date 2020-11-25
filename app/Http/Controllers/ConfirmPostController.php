@@ -32,6 +32,7 @@ class ConfirmPostController extends Controller
 
         foreach ($users as $user)
         {
+
             echo
             "<tr>
                     <td> {$user->id}</td>
@@ -40,13 +41,13 @@ class ConfirmPostController extends Controller
                     <td> {$user->name}</td>
                     <td> <a href='/admin/confirm/detail/$user->id'>Chi tiết</a></td>";
 
-            if (UserPost::find($user->id)->status == UserPost::STATUS_ELIMINATED )
+            if (UserPost::find($user->posts()->first()->id)->status == UserPost::STATUS_ELIMINATED )
                 echo"<td> Chưa đạt</td>";
 
-            if (UserPost::find($user->id)->status == UserPost::STATUS_REQUEST )
+            if (UserPost::find($user->posts()->first()->id)->status == UserPost::STATUS_REQUEST )
                 echo"<td> <button  data-id = '{$user->id}' class='verify btn-danger' value = 'Đề xuất' >đề xuất</button></td>";
 
-            if (UserPost::find($user->id)->status == UserPost::STATUS_QUALIFIED )
+            if (UserPost::find($user->posts()->first()->id)->status == UserPost::STATUS_QUALIFIED )
 
                 echo"<td><button data-id = '{$user->id}' class='verify btn-success' value = 'Đạt yêu cầu' > Đạt yêu cầu</button></td>";
             echo "</tr>";

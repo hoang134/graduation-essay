@@ -14,9 +14,11 @@ class StudentController extends Controller
 {
     public function viewpost()
     {
+        $date = date('Y-m-d');
         $posts = Post::all();
         return view('student.post.viewpost', [
-            'posts'=>$posts
+            'posts'=>$posts,
+            'date'=>$date
         ]);
     }
 
@@ -36,7 +38,6 @@ class StudentController extends Controller
         if(!$isUser->isEmpty()){
              return redirect()->route('student.post.viewpost')->with('error','Đăng ký thất bại');
         }
-
 
         $userpost = New UserPost();
         $userpost->user_id =$request->user_id;

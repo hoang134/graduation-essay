@@ -19,6 +19,7 @@
             <th scope="col">Giảng viên</th>
             <th scope="col">Tên đề tài</th>
             <th scope="col">Nội dung</th>
+            <th scope="col">Thời hạn đăng ký</th>
             <th scope="col">Thực hiện</th>
         </tr>
         </thead>
@@ -29,7 +30,12 @@
             <td>{{$post->title}}</td>
             <td>{{$post->lecturer->first()->name}}</td>
             <td>{{$post->content}}</td>
-            <td><a href="{{route('student.register',['user_id'=>\Illuminate\Support\Facades\Auth::user()->id,'post_id'=>$post->id])}}">Đăng ký</a></td>
+            <td>{{$post->deadline}}</td>
+            @if($date > $post->deadline)
+                <td style="color:#ff0000 ">hết hạn đăng ký</td>
+            @else
+                <td><a href="{{route('student.register',['user_id'=>\Illuminate\Support\Facades\Auth::user()->id,'post_id'=>$post->id])}}">Đăng ký</a></td>
+            @endif
         </tr>
         @endforeach
         </tbody>

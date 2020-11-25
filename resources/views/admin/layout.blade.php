@@ -61,12 +61,14 @@
                             Tài khoản
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link topicReport-menu" href="/admin/report">
-                            <span data-feather="airplay"></span>
-                            Báo cáo
-                        </a>
-                    </li>
+                    @can('viewReport',\App\User::class)
+                        <li class="nav-item">
+                            <a class="nav-link topicReport-menu" href="/admin/report">
+                                <span data-feather="airplay"></span>
+                                Báo cáo
+                            </a>
+                        </li>
+                    @endcan
                     @can('viewany',\App\UserPost::class)
                         <li class="nav-item">
                             <a class="nav-link list-post-menu" href="/admin/list">
@@ -85,14 +87,22 @@
                             </a>
                         </li>
                     @endcan
+
                     @can('assessor',\App\User::class)
-                    <li class="nav-item">
-                        <a class="nav-link confirm-menu" href="/admin/confirm">
-                            <span data-feather="airplay"></span>
-                            Duyệt khóa luận
-                        </a>
+                        <li class="nav-item">
+                            <a class="nav-link confirm-menu" href="/admin/confirm">
+                                <span data-feather="airplay"></span>
+                                Duyệt khóa luận
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link deadline-menu" href="/admin/post/deadline">
+                                <span data-feather="airplay"></span>
+                                Thời gian đăng ký khóa luận
+                            </a>
+                        </li>
                     @endcan
-                    </li>
 
                 </ul>
 
