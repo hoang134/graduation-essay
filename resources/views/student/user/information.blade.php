@@ -16,7 +16,7 @@
     <body>
     <div class="table-responsive">
         <table class="table table-striped table-sm">
-            <tr>
+            <tr style="background-color: #555;">
                 <th>Họ tên</th>
                 <th>Ngày sinh</th>
                 <th>Giới tính</th>
@@ -33,11 +33,13 @@
         </table>
         <br>
         <br>
+        <center>
         <div class="infostudent" style="font-size: 20px;">
             <a href="{{route('student.edit')}}" style="margin-right: 30px">Sửa thông tin Tài khoản</a>
             <a href="{{route('student.post')}} " style="margin-right: 30px">Thông đăng ký khóa luận</a>
             <a href="{{route('post')}}">Trở về trang chủ</a>
         </div>
+    </center>
     </div>
     </body>
 @endsection

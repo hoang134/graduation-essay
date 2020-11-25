@@ -43,7 +43,7 @@ class StudentController extends Controller
         $userpost->user_id =$request->user_id;
         $userpost->post_id = $request->post_id;
         $userpost->save();
-        return redirect()->route('home')->with('success','Đăng ký thành công');
+        return redirect()->route('student.post')->with('success','Đăng ký thành công');
     }
 
     public function post()

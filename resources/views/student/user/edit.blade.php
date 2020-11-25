@@ -7,25 +7,50 @@
     <center><h1>Sửa thông tin tài khoản</h1></center>
     <br>
     <div style="font-size: 20px">
-        <form action="{{route('student.save',['id'=>$user->id])}}" method="post">
+            
+            <form class="form-horizontal bucket-form" action="{{route('student.save',['id'=>$user->id])}}" method="post">
             @csrf
-            <label>Tên:</label>
-            <input type="text" name="name" value="{{$user->name}}"><br>
-            <label>Ngày sinh:</label>
-            <input type="text" name="birthday" value=" {{$user->birthday}}"><br>
-            <label>Mã số sinh viên:</label>
-            <input type="text" name="code" value=" {{$user->code}}"><br>
-            <label>Lớp:</label>
-            <input type="text" name="class" value="{{$user->class}}"><br>
-            <label>Giới tính:</label>
-            <input style="margin-right: 10px" type="radio" name="gender" value="Nam">Nam
-                      <input type="radio" name="gender" value="Nữ">Nữ<br>
-            <label>Mật khẩu mới:</label>
-            <input type="text" name="password" value=""><br>
-            <label>Xác nhận khẩu mới:</label>
-            <input type="text" name="password_confirmation" value=""><br>
+            <div class="form-group">
+                <div class="col-lg-6">
+                    Họ tên
+                    <div class="input-group m-bot15">
+                        <span class="input-group-addon btn-success">@</span>
+                        <input type="text" class="form-control" name="name" value="{{$user->name}}">
+                    </div>
+                    Ngày sinh
+                    <div class="input-group m-bot15">
+                        <span class="input-group-addon btn-success">@</span>
+                        <input type="text" class="form-control" name="birthday" value=" {{$user->birthday}}">
+                    </div>
+                    Mã số sinh viên
+                    <div class="input-group m-bot15">
+                        <span class="input-group-addon btn-success">@</span>
+                        <input type="text" class="form-control" name="code" value=" {{$user->code}}">
+                    </div>
+                    Lớp
+                    <div class="input-group m-bot15">
+                        <span class="input-group-addon btn-success">@</span>
+                        <input type="text" class="form-control" name="class" value="{{$user->class}}">
+                    </div>
+                    Giới tính
+                    <div class="input-group m-bot15">
+                        <input style="margin-right: 10px" type="radio" name="gender" value="Nam">Nam
+                      <input type="radio" name="gender" value="Nữ">Nữ
+                    </div>
+                    Mật khẩu mới
+                    <div class="input-group m-bot15">
+                        <span class="input-group-addon btn-success">@</span>
+                        <input type="password" class="form-control" name="password" value="">
+                    </div>
+                    Xác nhận mật khẩu
+                    <div class="input-group m-bot15">
+                        <span class="input-group-addon btn-success">@</span>
+                        <input type="password" class="form-control" name="password_confirmation" value="">
+                    </div>
 
-            <input type="submit" value="Lưu">
+                    <input type="submit" class="btn btn-primary"><br>
+                </div>
+            </div>
         </form>
     </div>
     @if ($errors->any())
@@ -39,16 +64,5 @@
     @endif
 </body>
 
-
-
-
-<style type="text/css">
-    label {
-        width: 15%;
-    }
-    input[type=text] {
-        width: 50%;
-    }
-</style>
 @endsection
 

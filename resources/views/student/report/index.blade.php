@@ -12,14 +12,14 @@
         </style>
     </head>
     <body>
-    <h1>Báo cáo tuần</h1>
+    <center><h1>Báo cáo tuần</h1></center>
 
     @if(session()->has('empty'))
 
     @endif
     <div class="table-responsive">
         <table class="table table-striped table-sm">
-            <tr>
+            <tr style="background-color: #555;">
                 <th>Id</th>
                 <th>Tiêu đề báo cáo</th>
                 <th>tên đề tài</th>

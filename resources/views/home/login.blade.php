@@ -1,115 +1,46 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <title>Login</title>
+<title>Trang đăng nhập</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Visitors Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- bootstrap-css -->
+<link rel="stylesheet" href="{{('css/libs2/bootstrap.min.css')}}" >
+<!-- //bootstrap-css -->
+<!-- Custom CSS -->
+<link href="{{('css/libs2/style.css')}}" rel='stylesheet' type='text/css' />
+<link href="{{('css/libs2/style-responsive.css')}}" rel="stylesheet"/>
+<!-- font CSS -->
+<link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+<!-- font-awesome icons -->
+<link rel="stylesheet" href="{{('css/libs2/font.css')}}" type="text/css"/>
+<link href="{{ asset('/css/fontawesome/css/all.css') }}" rel="stylesheet"> 
+<!-- //font-awesome icons -->
+<script src="{{ 'js/libs2/jquery2.0.3.min.js' }}"></script>
 </head>
-
-
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <title>Login</title>
-</head>
-<body>
-    <div class="container-fluid bg">
-        <div class="row justify-content-center">
-            <div class="float-left">
-                <div class="container-fluid bgg">
-                    <h3>UET</h3>
-                    <h4>Hệ thống đăng ký khóa luận tốt nghiệp cho sinh viên Đại học công nghệ</h4>
-                </div>
-            </div>
-        <div class="float-right">
-            <div class="col-md-10 col-sm-7 col-xs-12 row-container">
-            <center><h2>Đăng nhập</h2></center>
-            <form action="{{route('login')}}"  method="post">
+<body id="login">
+<div class="log-w3">
+<div class="w3layouts-main">
+    <h2>Đăng nhập</h2>
+        <form action="{{route('login')}}"  method="post">
                 @csrf
-                <div>
-                    <label for="email">Email</label>
-                    <br>
-                    <input type="text" id="email" name="email" placeholder="Nhập email">
-                    <br>
-                </div>
-                <div>
-                    <label for="password">Password</label>
-                    <br>
-                    <input type="password" id="password" name="password" placeholder="Nhập password"><br>
-                </div>
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="rememberMe">
-                    <label class="form-check-label" id="ad" for="rememberMe">Nhớ tài khoản</label>
-                </div>
-                <input type="submit" class="btn btn-primary" value="Đăng nhập">
-            </form>
-            </div>
-        </div>
-        </div>
-    </div>
+            <label for="email">Email</label>
+            <input type="email" autocomplete="username" class="ggg" id="email" name="email" placeholder="Nhập email">
+            <label for="password">Password</label>
+            <input type="password" autocomplete="current-password" class="ggg" id="password" name="password" placeholder="Nhập password">
+            <span><input type="checkbox" />Nhớ tài khoản</span>
+            <h6><a href="#">Quên mật khẩu?</a></h6>
+            <input type="submit" value="Đăng nhập" name="login">
+        </form>
+</div>
+</div>
+<script src="{{ 'js/libs2/bootstrap.js' }}"></script>
+<script src="{{ 'js/libs2/jquery.dcjqaccordion.2.7.js' }}"></script>
+<script src="{{ 'js/libs2/scripts.js' }}"></script>
+<script src="{{ 'js/libs2/jquery.slimscroll.js' }}"></script>
+<script src="{{ 'js/libs2/jquery.nicescroll.js' }}"></script>
+<script src="{{ 'js/libs2/jquery.scrollTo.js' }}"></script>
 </body>
 </html>
-<style type="text/css">
-    html,body {
-        width: 100%;
-        height: 100%;
-        font-weight: bold;
-    }
-    .bg {
-        background: #2b3137 no-repeat;
-        background-size: cover;
-        width: 100%;
-        height: 100%;
-    }
-    .row-container {
-        border: 1px solid gray;
-        border-radius: 20px;
-        margin-top: 20vh;
-        padding: 30px;
-        -webkit-box-shadow: 3px 0px 75px -15px rgba(0,0,0,0.75);
-        -moz-box-shadow: 3px 0px 75px -15px rgba(0,0,0,0.75);
-        box-shadow: 3px 0px 75px -15px rgba(0,0,0,0.75);
-        background-color: #aabaca;
-    }
-    label{
-        text-shadow: 2px 2px 10px white;
-        width: 20%;
-    }
-    input[type=text],input[type=password] {
-        width: 100%;
-        outline: none;
-        padding: 10px 35px 10px 10px;
-        border: 1px solid black;
-        border-radius: 30px;
-        background-color: white;
-    }
-    #ad {
-        width: 200px;
-    }
-    .float-right {
-        width: 40%;
-    }
-    .float-left {
-        width: 60%;
-    }
-    .bgg {
-        margin-top: 30vh;
-    }
-    h3 {
-        font-size: 50px;
-        color: green;
-    }
-    h4 {
-        font-size: 40px;
-        color: white;
-    }
-</style>
-

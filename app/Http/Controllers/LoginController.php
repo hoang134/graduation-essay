@@ -22,7 +22,7 @@ class LoginController extends Controller
             // Authentication passed...
             if (Auth::user()->role == User::ROLE_USER)
             {
-                return redirect()->route('home');
+                return redirect()->route('student.post.viewpost');
             }
             else{
                 return redirect()->route('post');

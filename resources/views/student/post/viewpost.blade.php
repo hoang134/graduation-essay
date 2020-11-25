@@ -11,10 +11,10 @@
     </style>
 </head>
 <body>
-    <h1>Đăng ký đề tài</h1>
+    <center><h1>Đăng ký đề tài</h1></center>
     <table class="table table-striped table-sm">
         <thead>
-        <tr>
+        <tr style="background-color: #555;">
             <th scope="col">id</th>
             <th scope="col">Giảng viên</th>
             <th scope="col">Tên đề tài</th>

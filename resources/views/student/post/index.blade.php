@@ -15,9 +15,9 @@
     <div>
         <div>
             @if(isset($user))
-            <h1>Đề tài đã chọn</h1>
+            <center><h1>Đề tài đã chọn</h1></center>
             <table class="table table-striped table-sm">
-                <tr>
+                <tr style="background-color: #555;">
                     <th scope="col">Tên đề tài</th>
                     <th scope="col">Giảng viên</th>
                     <th scope="col">Nội dung đề tài</th>
@@ -27,7 +27,7 @@
                     <td>{{$user->posts->first()->title}}</td>
                     <td>{{$user->posts->first()->lecturer->first()->name}}</td>
                     <td>{{$user->posts->first()->content}}</td>
-                    <td><a href="{{route('student.post.delete')}}">Hủy đăng ký</a></td>
+                    <td><a href="{{route('student.post.delete')}}" onclick="return confirm('Bạn có chắc chắn muốn hủy không?');">Hủy đăng ký</a></td>
                 </tr>
             </table>
             @else
