@@ -19,6 +19,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href="{{ asset('/css/fontawesome/css/all.css') }}" rel="stylesheet"> 
 <!-- //font-awesome icons -->
 <script src="{{ 'js/libs2/jquery2.0.3.min.js' }}"></script>
+
+<style type="text/css">
+    html,body {
+        background: #2b3137 no-repeat;
+    }
+    .w3layouts-main {
+        background-color: #aabaca
+    }
+    .w3layouts-main input[type="submit"] {
+        background-color: #337ab7;
+    }
+</style>
 </head>
 <body id="login">
 <div class="log-w3">
@@ -32,7 +44,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <input type="password" autocomplete="current-password" class="ggg" id="password" name="password" placeholder="Nhập password">
             <span><input type="checkbox" />Nhớ tài khoản</span>
             <h6><a href="#">Quên mật khẩu?</a></h6>
-            <input type="submit" value="Đăng nhập" name="login">
+            <input type="submit" class="btn btn-primary" value="Đăng nhập" name="login">
         </form>
 </div>
 </div>
