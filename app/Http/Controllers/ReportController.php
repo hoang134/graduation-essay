@@ -92,7 +92,7 @@ class ReportController extends Controller
             $reprot->path = $path;
             $reprot->save();
 
-            return redirect()->route('home');
+            return redirect()->route('student.post.viewpost');
 
         }
 

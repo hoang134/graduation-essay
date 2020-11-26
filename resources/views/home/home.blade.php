@@ -71,7 +71,7 @@
         <div class="leftside-navigation">
             <ul class="sidebar-menu" id="nav-accordion">
                 <li>
-                    <a class="active" href="{{ URL::to('/student/viewpost') }}">
+                    <a href="{{ URL::to('/student/viewpost') }}">
                         <i class="fa fa-th"></i>
                         <span>Đề tài</span>
                     </a>
@@ -111,8 +111,5 @@
 <script src="{{asset('js/libs2/scripts.js')}}"></script>
 <script src="{{asset('js/libs2/jquery.slimscroll.js')}}"></script>
 <script src="{{asset('js/libs2/jquery.nicescroll.js')}}"></script>
-<!-- <script src="{{ asset('/js/libs/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ asset('/js/libs/feather.min.js') }}"></script>
-<script src="{{ asset('/js/libs/toastr.min.js') }}"></script> -->
 </body>
 </html>

@@ -37,7 +37,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="w3layouts-main">
     <h2>Đăng nhập</h2>
         <form action="{{route('login')}}"  method="post">
-                @csrf
+            @csrf
             <label for="email">Email</label>
             <input type="email" autocomplete="username" class="ggg" id="email" name="email" placeholder="Nhập email">
             <label for="password">Password</label>
