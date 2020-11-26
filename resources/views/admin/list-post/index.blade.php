@@ -2,12 +2,20 @@
 @section('title', 'Quản lý tài khoản')
 
 @section('content')
-    <h2>Quản lý danh sách đăng ký đề tài</h2>
+<head>
+    <style type="text/css">
+        th,td {
+            border-left: 1px solid #dee2e6;
+            border-right: 1px solid #dee2e6;
+        }
+    </style>
+</head>
+    <center><h2>Quản lý danh sách đăng ký đề tài</h2></center>
     <a href="{{route('user.create')}}">Thêm đề tài khoản</a>
     <div class="table-responsive">
         <table class="table table-striped table-sm">
             <thead>
-            <tr>
+            <tr style="background-color: #555;">
                 <th>Id</th>
                 <th>Tên đề tài</th>
                 <th>tên</th>

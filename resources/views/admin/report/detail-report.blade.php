@@ -2,12 +2,20 @@
 @section('title', 'Quản lý báo cáo')
 
 @section('content')
+<head>
+    <style type="text/css">
+        th,td {
+            border-left: 1px solid #dee2e6;
+            border-right: 1px solid #dee2e6;
+        }
+    </style>
+</head>
     <h2>chi tiết báo cáo</h2>
 
     <div class="table-responsive">
         <table class="table table-striped table-sm">
             <thead>
-            <tr>
+            <tr style="background-color: #555;">
                 <th>Id</th>
                 <th>tên báo cáo</th>
                 <th>nội dung</th>

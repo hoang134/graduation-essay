@@ -2,7 +2,15 @@
 @section('title', 'Quản lý báo cáo')
 
 @section('content')
-    <h2>Quản báo cáo</h2>
+<head>
+    <style type="text/css">
+        th,td {
+            border-left: 1px solid #dee2e6;
+            border-right: 1px solid #dee2e6;
+        }
+    </style>
+</head>
+    <h2>Quản lý báo cáo</h2>
     <a href="{{route('topic.report.create')}}">Tạo báo cáo</a>
     @if($topicReports->isEmpty())
         <h6>Bạn chưa tạo chủ đề báo cáo nào</h6>
@@ -10,7 +18,7 @@
     <div class="table-responsive">
         <table class="table table-striped table-sm">
             <thead>
-            <tr>
+            <tr style="background-color: #555;">
                 <th>Id</th>
                 <th>tên báo cáo</th>
                 <th>tên đề tài</th>

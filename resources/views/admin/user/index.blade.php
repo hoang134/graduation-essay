@@ -2,7 +2,15 @@
 @section('title', 'Quản lý tài khoản')
 
 @section('content')
-    <h2>Quản lý tài khoản</h2>
+<head>
+    <style type="text/css">
+        th,td {
+            border-left: 1px solid #dee2e6;
+            border-right: 1px solid #dee2e6;
+        }
+    </style>
+</head>
+    <center><h2>Quản lý tài khoản</h2></center>
     @can('create',\App\User::class)
         <a href="{{route('user.create')}}">Thêm  tài khoản</a>
 
@@ -10,7 +18,7 @@
     <div class="table-responsive">
         <table class="table table-striped table-sm">
             <thead>
-            <tr>
+            <tr style="background-color: #555;">
                 <th>Id</th>
                 <th>Tên</th>
                 <th>Ngày sinh</th>
@@ -18,7 +26,7 @@
                 <th>email</th>
                 <th>lớp</th>
                 <th>giới tính</th>
-                <th>thực hiện</th>
+                <th colspan="2">thực hiện</th>
             </tr>
             </thead>
             <tbody>

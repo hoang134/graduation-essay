@@ -2,17 +2,25 @@
 @section('title', 'Quản lý đề tài khóa luận')
 
 @section('content')
-    <h2>Quản lý đề tài khóa luận</h2>
+<head>
+    <style type="text/css">
+        th,td {
+            border-left: 1px solid #dee2e6;
+            border-right: 1px solid #dee2e6;
+        }
+    </style>
+</head>
+    <center><h2>Quản lý đề tài khóa luận</h2></center>
     <a href="{{route('post.create')}}">Thêm đề tài khóa luận</a>
     <div class="table-responsive">
         <table class="table table-striped table-sm">
             <thead>
-            <tr>
+            <tr style="background-color: #555;">
                 <th>Id</th>
                 <th>Giảng Viên</th>
                 <th>Tên đề tài</th>
                 <th>Nội dung</th>
-                <th>Thực hiện</th>
+                <th colspan="2">Thực hiện</th>
             </tr>
             </thead>
             <tbody>
