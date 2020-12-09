@@ -16,8 +16,9 @@
                 <th>Ngày sinh</th>
                 <th>code</th>
                 <th>email</th>
-                <th>lớp</th>
+                <th>lớp/Nơi công tác</th>
                 <th>giới tính</th>
+                <th>loại tài khoản</th>
                 <th>thực hiện</th>
             </tr>
             </thead>
@@ -32,6 +33,7 @@
                     <td>{{$user->email}}</td>
                     <td>{{$user->class}}</td>
                     <td>{{$user->gender}}</td>
+                    <td>{{$user->role}}</td>
                     <td>
                         @can('update', $user)
                             <a href="{{route('user.edit',['id'=>$user->id])}}">Sửa</a>

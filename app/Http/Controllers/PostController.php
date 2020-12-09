@@ -77,9 +77,11 @@ class PostController extends Controller
 
     public function save(Request $request)
     {
+
         $request->validate([
             'title'=>'required',
-            'contents'=>'required'
+            'contents'=>'required',
+            'quantity'=>'required'
         ]);
 
         if(!isset($request->id))
@@ -87,6 +89,7 @@ class PostController extends Controller
             $post  = new Post();
             $post->title = $request->title;
             $post->content = $request->contents;
+            $post->quantity = $request->quantity;
             $post->save();
 
             $userPost = new UserPost();
@@ -107,6 +110,7 @@ class PostController extends Controller
             $post = Post::find($request->id);
             $post->title = $request->title;
             $post->content = $request->contents;
+            $post->quantity = $request->quantity;
             $post->save();
            return redirect()->route('post')->with('success', 'Lưu thành công!');;
         }

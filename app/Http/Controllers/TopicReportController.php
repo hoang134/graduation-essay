@@ -80,11 +80,12 @@ class TopicReportController extends Controller
     public function save(Request $request)
     {
 
-        $request->validate([
-                'title'=>'required',
-            ]
-        );
         if(!isset($request->id)){
+            $request->validate([
+                    'title'=>'required',
+                    'deadline'=>'required',
+                ]
+            );
             $topicReport = new TopicReport();
             $topicReport->post_id = $request->post_id;
             $topicReport->title = $request->title;
@@ -93,9 +94,13 @@ class TopicReportController extends Controller
             return redirect()->route('topic.report')->with('success','thêm thành công');
         }
         else{
+            $request->validate([
+                    'title'=>'required',
+                ]
+            );
             $topicReport = TopicReport::find($request->id);
             $topicReport->title = $request->title;
-            $topicReport->deadline = $request->deadline;
+            ($request->deadline !=null ) ? $topicReport->deadline = $request->deadline : '';
             $topicReport->save();
             return redirect()->route('topic.report')->with('success','Sửa thành công');
         }

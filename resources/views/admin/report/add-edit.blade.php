@@ -34,7 +34,7 @@
                         <label for="code" class="col-sm-2 col-form-label">hạn đăng ký</label>
                         <div class="col-sm-10">
                             <input type="date" class="form-control" id="deadline" name="deadline"
-                                   value="{{ old('deadline', isset($topicReport) ? $topicReport->deadline : '') }}">
+                                   value="{{ old('deadline', isset($topicReport) ? ($topicReport->deadline) : '') }}">
                         </div>
                     </div>
 

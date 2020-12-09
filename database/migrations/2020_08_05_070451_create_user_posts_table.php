@@ -18,8 +18,11 @@ class CreateUserPostsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('post_id');
+            $table->string('note')->default('---');
+            $table->string('note_2')->default('---');
+            $table->float('scores')->default(0.0);
             $table->enum('type',[UserPost::TYPE_REGISTER,UserPost::TYPE_POST]);
-
+            $table->string('status_register')->default(UserPost::STATUS_REGISTER_REQUEST);
             $table->string('status')->default(UserPost::STATUS_ELIMINATED);
 
             $table->timestamps();

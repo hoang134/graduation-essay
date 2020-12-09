@@ -13,9 +13,9 @@
                         <label for="code" class="col-sm-2 col-form-label">Tên đề tài</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="title" name="title"
-                                   value="{{ old('address', isset($post) ? $post->title : '') }}">
-                            @if ($errors->has('address'))
-                                <small class="form-text text-danger">{{ $errors->first('address') }}</small>
+                                   value="{{ old('title', isset($post) ? $post->title : '') }}">
+                            @if ($errors->has('title'))
+                                <small class="form-text text-danger">{{ $errors->first('title') }}</small>
                             @endif
                         </div>
                     </div>
@@ -26,8 +26,20 @@
                             <input type="text" class="form-control" id="contents" name="contents"
                                    value="{{ old('contents', isset($post) ? $post->content: '') }}">
 
-                            @if ($errors->has('phone'))
-                                <small class="form-text text-danger">{{ $errors->first('phone') }}</small>
+                            @if ($errors->has('contents'))
+                                <small class="form-text text-danger">{{ $errors->first('contents') }}</small>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="quantity" class="col-sm-2 col-form-label">số lượng</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="quantity" name="quantity"
+                                   value="{{ old('quantity', isset($post) ? $post->quantity: '') }}">
+
+                            @if ($errors->has('quantity'))
+                                <small class="form-text text-danger">{{ $errors->first('quantity') }}</small>
                             @endif
                         </div>
                     </div>

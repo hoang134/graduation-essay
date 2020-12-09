@@ -8,8 +8,12 @@ class UserPost extends Model
     const TYPE_REGISTER = "Đăng ký";
 
     const STATUS_QUALIFIED  = "Đạt";
+    const STATUS_REGISTER_REQUEST  = "đề xuất đăng ký";
+    const STATUS_REGISTER_FINISH  = "Hoàn thành đăng ký";
+    const STATUS_REGISTER_ELIMINATED  = "Từ chối đăng ký";
     const STATUS_ELIMINATED = "Chưa đạt";
     const STATUS_REQUEST = "Đề xuất";
+    const STATUS_FINISH = "Hoàn thành";
 
 
 

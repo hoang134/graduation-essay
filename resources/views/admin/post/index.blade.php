@@ -12,6 +12,7 @@
                 <th>Giảng Viên</th>
                 <th>Tên đề tài</th>
                 <th>Nội dung</th>
+                <th>Số lượng</th>
                 <th>Thực hiện</th>
             </tr>
             </thead>
@@ -23,6 +24,7 @@
                     <td>{{$post->lecturer->first()->name}}</td>
                     <td>{{$post->title}}</td>
                     <td>{{$post->content}}</td>
+                    <td>{{$post->quantity}}</td>
 
                     <td>
                         @can('update',$post)

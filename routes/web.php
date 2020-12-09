@@ -30,6 +30,11 @@ Route::prefix('admin')->middleware('CheckRole')->group(function () {
     Route::get('post/delete/{id}','PostController@delete')->name('post.delete');
     Route::post('post/save/{id?}','PostController@save')->name('post.save');
 
+    Route::get('post/verify/register','VerifyRegisterPost@index')->name('post.VerifyRegister');
+    Route::get('post/verify/register/list/{id}','VerifyRegisterPost@list')->name('post.VerifyRegister.list');
+    Route::get('post/verify/register/evaluate/{id}','VerifyRegisterPost@evaluate')->name('post.VerifyRegister.evaluate');
+    Route::get('post/verify/register/infoStudent/{id}','VerifyRegisterPost@infoStudent')->name('post.VerifyRegister.infoStudent');
+
     Route::get('post/deadline','PostController@deadline')->name('post.deadline');
     Route::get('post/saveDeadline/{id?}','PostController@saveDeadline')->name('post.saveDeadline');
 
@@ -58,24 +63,39 @@ Route::prefix('admin')->middleware('CheckRole')->group(function () {
     Route::get('verify','VerifyPostController@index')->name('verify');
     Route::get('verify/list/{id}','VerifyPostController@list')->name('verify.list');
     Route::get('verify/evaluate/{id}','VerifyPostController@evaluate')->name('verify.evaluate');
+    Route::post('verify/note/{id}','VerifyPostController@note')->name('verify.note');
 
     Route::get('confirm','ConfirmPostController@index')->name('confirm');
     Route::get('confirm/list/{id}','ConfirmPostController@list')->name('confirm.list');
+    Route::post('confirm/evaluate','ConfirmPostController@evaluate');
     Route::get('confirm/evaluate/{id}','ConfirmPostController@evaluate')->name('confirm.evaluate');
     Route::get('confirm/detail/{id}','ConfirmPostController@detail')->name('confirm.detail');
 
+    Route::get('protect/post','ProtectPostController@index')->name('protect.post');
+    Route::get('protect/post/list/{id}','ProtectPostController@list')->name('protect.list');
+    Route::post('protect/post/evaluate','ProtectPostController@evaluate');
+    Route::get('protect/post/evaluate/{id}','ProtectPostController@evaluate');
+    Route::post('protect/post/note/{id}','ProtectPostController@note')->name("protect.note");
+
+    Route::get('score/post','ScorePostController@index')->name('score.post');
+
+    Route::get('messenger/lecturer{id}','MessengerController@assessor')->name('lecturer.messenger');
+    Route::post('messenger/lecturer/save/{id}','MessengerController@save')->name('lecturer.messenger.save');
+    Route::get('messenger/assessor/{id}','MessengerController@assessor')->name('assessor.messenger');
+    Route::post('messenger/assessor/save/{id}','MessengerController@save')->name('assessor.messenger.save');
+
+
 });
-
-
 
 Route::prefix('student')->middleware('CheckLogin','CheckIsStudent')->group(function () {
     Route::get('information', 'StudentController@informationStudent')->name('student.information');
     Route::get('edit', 'StudentController@edit')->name('student.edit');
     Route::post('save/{id}', 'StudentController@save')->name('student.save');
     Route::get('register/{user_id}/{post_id}', 'StudentController@register')->name('student.register');
-    Route::get('post', 'StudentController@post')->name('student.post');
+    Route::get('post','StudentController@post')->name('student.post');
     Route::get('post/delete', 'StudentController@deletePost')->name('student.post.delete');
     Route::get('viewpost', 'StudentController@viewpost')->name('student.post.viewpost');
+    Route::get('lecturer/{id}', 'StudentController@lecturer')->name('student.lecturer');
 
     Route::get('report', 'ReportController@index')->name('student.report.index');
     Route::get('report/create/{topic_id}', 'ReportController@create')->name('student.report.create');
@@ -86,6 +106,9 @@ Route::prefix('student')->middleware('CheckLogin','CheckIsStudent')->group(funct
     Route::get('comment/{topic_id}', 'CommentController@commentStudent')->name('student.comment');
     Route::post('comment/create', 'CommentController@createCommentStudent')->name('student.comment.create');
     Route::get('comment/delete/{id}','CommentController@deleteComment')->name('student.comment.delete');
+
+    Route::get('messenger','MessengerController@student')->name('student.messenger');
+    Route::post('messenger/save/{id}','MessengerController@save');
 
 
 });

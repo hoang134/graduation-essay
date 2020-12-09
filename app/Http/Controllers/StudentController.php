@@ -14,11 +14,24 @@ class StudentController extends Controller
 {
     public function viewpost()
     {
+        $quantityUserPosts =array();
+
         $date = date('Y-m-d');
         $posts = Post::all();
+
+        foreach ($posts as $post)
+        {
+            $quantityUserPost = DB::table('user_posts')->where('post_id',$post->id)
+                ->where('status_register',UserPost::STATUS_REGISTER_REQUEST)
+                ->count('*');
+
+            array_push($quantityUserPosts,["$post->id"=>"$quantityUserPost"]);
+        }
+
         return view('student.post.viewpost', [
             'posts'=>$posts,
-            'date'=>$date
+            'date'=>$date,
+            'quantityUserPosts'=>$quantityUserPosts
         ]);
     }
 
@@ -33,7 +46,9 @@ class StudentController extends Controller
 
     public function register(Request $request)
     {
-
+//        $quantityUserPost = DB::table('user_posts')->where('status_register',UserPost::STATUS_REGISTER_REQUEST)
+//            ->where('post_id',$request->post_id)->count('*');
+//        dd($quantityUserPost);
         $isUser = DB::table('user_posts')->where('user_id',"$request->user_id")->get();
         if(!$isUser->isEmpty()){
              return redirect()->route('student.post.viewpost')->with('error','Đăng ký thất bại');
@@ -42,6 +57,7 @@ class StudentController extends Controller
         $userpost = New UserPost();
         $userpost->user_id =$request->user_id;
         $userpost->post_id = $request->post_id;
+        $userpost->status_register = UserPost::STATUS_REGISTER_REQUEST;
         $userpost->save();
         return redirect()->route('student.post')->with('success','Đăng ký thành công');
     }
@@ -49,10 +65,16 @@ class StudentController extends Controller
     public function post()
     {
         $user = Auth::user();
+        $date = date('Y-m-d');
         $isUser = DB::table('user_posts')->where('user_id',"$user->id")->get();
+
+        $userPost = DB::table('user_posts')->where('user_id',$user->id)->get()->first();
+
         if(!$isUser->isEmpty()){
             return view('student.post.index',[
-                'user'=>$user
+                'user'=>$user,
+                'date'=>$date,
+                'userPost'=>$userPost
             ]);
         }
         else
@@ -94,6 +116,14 @@ class StudentController extends Controller
             $user->password = bcrypt($request->password);
         $user->save();
         return redirect()->route('student.information');
+    }
+
+    public function lecturer( Request $request)
+    {
+        $user = User::find($request->id);
+        return view('student.post.lecturer',[
+            'user'=>$user
+        ]);
     }
 
 }

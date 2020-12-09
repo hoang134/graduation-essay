@@ -17,6 +17,7 @@ class CreatePostsTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->string('content');
+            $table->integer('quantity');
             $table->dateTime('deadline')->nullable();
             $table->timestamps();
 

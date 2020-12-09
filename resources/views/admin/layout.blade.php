@@ -78,17 +78,33 @@
                         </li>
                     @endcan
 
-
                     @can('lecturers',\App\User::class)
+
+                        <li class="nav-item">
+                            <a class="nav-link verify-register-menu" href="/admin/post/verify/register">
+                                <span data-feather="airplay"></span>
+                                Xác nhận Đăng ký khóa luận
+                            </a>
+                        </li>
+
                         <li class="nav-item">
                             <a class="nav-link verify-menu" href="/admin/verify">
                                 <span data-feather="airplay"></span>
                                 Xác nhận khóa luận
                             </a>
                         </li>
+
                     @endcan
 
                     @can('assessor',\App\User::class)
+
+                        <li class="nav-item">
+                            <a class="nav-link deadline-menu" href="/admin/post/deadline">
+                                <span data-feather="airplay"></span>
+                                Thời gian đăng ký khóa luận
+                            </a>
+                        </li>
+
                         <li class="nav-item">
                             <a class="nav-link confirm-menu" href="/admin/confirm">
                                 <span data-feather="airplay"></span>
@@ -97,10 +113,17 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link deadline-menu" href="/admin/post/deadline">
+                            <a class="nav-link protect-menu" href="/admin/protect/post">
                                 <span data-feather="airplay"></span>
-                                Thời gian đăng ký khóa luận
+                                Bảo vệ khóa luận
                             </a>
+                        </li>
+
+                        <li class="nav-item">
+                        <a class="nav-link score-menu" href="/admin/score/post">
+                            <span data-feather="airplay"></span>
+                            Điểm khóa luận
+                        </a>
                         </li>
                     @endcan
 

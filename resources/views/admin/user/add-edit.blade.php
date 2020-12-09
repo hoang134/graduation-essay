@@ -52,7 +52,7 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="quantity" class="col-sm-2 col-form-label">Lớp</label>
+                        <label for="quantity" class="col-sm-2 col-form-label">Lớp/nơi công tác</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="class" name="class"
                                    value="{{ old('class', isset($user) ? $user->class: '') }}">
@@ -86,16 +86,13 @@
                     @if(!isset($user))
                         <div>
                             <span style="font-size: 15px;margin-left: 200px;" >Sinh viên</span>
-
                             <input type="radio" name="role" id="male" value="USER" >
+
                             <span style="font-size: 15px;">giảng viên</span>
                             <input type="radio" name="role" id="admin" value="ADMIN">
+
                             <span style="font-size: 15px;" >Khoa CNTT</span>
                             <input type="radio" name="role" id="male" value="ASSESSOR" >
-
-                            <input type="radio" name="role" id="male" value="user" >
-                            <span style="font-size: 15px;">giảng viên</span>
-                            <input type="radio" name="role" id="admin" value="admin">
 
                         </div>
                     @endif

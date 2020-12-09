@@ -59,9 +59,16 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Post', 'user_posts', 'user_id', 'post_id')->withTimestamps();
     }
 
-    public function messengers()
+
+
+    public function messengerTo()
     {
-        return $this->hasMany('App\Messenger','user_id','id');
+        return $this->hasMany('App\Messenger','user_id_to','id');
+    }
+
+    public function messengerFrom()
+    {
+        return $this->hasMany('App\Messenger','user_id_from','id');
     }
 
     public function reports()
