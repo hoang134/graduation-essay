@@ -86,6 +86,7 @@ class UserController extends Controller
            $request->validate([
            'name' => 'required|max:255',
            'gender' => 'required',
+           'class' => 'required',
            'password_confirmation' => 'same:password'
        ]);
 

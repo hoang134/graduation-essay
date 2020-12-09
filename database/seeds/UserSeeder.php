@@ -25,6 +25,7 @@ class UserSeeder extends Seeder
         $admin->email = "gv1@gmail.com";
         $admin->password = bcrypt('123456');
         $admin->gender =User::GENDER_MALE ;
+        $admin->class = 'CNTT';
         $admin->role =User::ROLE_ADMIN ;
         $admin->save();
 
@@ -33,6 +34,7 @@ class UserSeeder extends Seeder
         $admin->email = "gv2@gmail.com";
         $admin->password = bcrypt('123456');
         $admin->gender =User::GENDER_MALE ;
+        $admin->class = 'CNTT';
         $admin->role =User::ROLE_ADMIN ;
         $admin->save();
 
@@ -41,6 +43,7 @@ class UserSeeder extends Seeder
         $admin->email = "gv3@gmail.com";
         $admin->password = bcrypt('123456');
         $admin->gender =User::GENDER_MALE ;
+        $admin->class = 'CNTT';
         $admin->role =User::ROLE_ADMIN ;
         $admin->save();
 
