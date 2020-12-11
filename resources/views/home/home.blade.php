@@ -10,9 +10,9 @@
 <link href="{{asset('css/libs2/style-responsive.css')}}" rel="stylesheet"/>
 <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="{{asset('css/libs2/font.css')}}" type="text/css"/>
-<link href="{{asset('css/libs2/font-awesome.css')}}" rel="stylesheet"> 
+<link href="{{asset('css/libs2/font-awesome.css')}}" rel="stylesheet">
 <link rel="stylesheet" href="{{asset('css/libs2/morris.css')}}" type="text/css"/>
-<link href="{{ asset('/css/fontawesome/css/all.css') }}" rel="stylesheet"> 
+<link href="{{ asset('/css/fontawesome/css/all.css') }}" rel="stylesheet">
 <link rel="stylesheet" href="{{asset('css/libs2/monthly.css')}}">
 
 <script src="{{asset('js/libs2/jquery2.0.3.min.js')}}"></script>
@@ -36,7 +36,7 @@
 <div class="nav notify-row" id="top_menu">
     <ul class="nav top-menu">
         <li id="header_inbox_bar" class="dropdown">
-            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+            <a data-toggle="dropdown" class="dropdown-toggle" href ="/student/messenger">
                 <i class="fa fa-envelope"></i>
             </a>
             <ul class="dropdown-menu extended inbox">
@@ -76,7 +76,7 @@
                         <span>Đề tài</span>
                     </a>
                 </li>
-                
+
                 <li class="sub-menu">
                     <a href="/student/post">
                         <i class="fa fa-check-circle"></i>
@@ -89,7 +89,7 @@
                         <span>Báo cáo tuần</span>
                     </a>
                 </li>
-            </ul>    
+            </ul>
         </div>
     </div>
 </aside>

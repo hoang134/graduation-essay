@@ -42,8 +42,8 @@ class VerifyPostController extends Controller
                     <td> {$post->title}</td>
                     <td> {$post->lecturer->first()->name}</td>
                     <td> {$user->name}</td>";
-
                 echo "<td style='color: #005cbf'><a class='data-id' id='{$userPost->id}' data-toggle=\"modal\" data-target=\"#exampleModal\" data-whatever=\"@mdo\">{$userPost->note}</a></td>";
+                echo "<td><a href='/admin/messenger/lecturer/{$user->id}'>nhắn tin</a></td>";
                 if ($userPost->status == UserPost::STATUS_ELIMINATED )
                     echo"<td> <button data-id = '{$user->id}' class='verify btn-danger' value = 'Chưa đạt' > Chưa đạt</button></td>";
                 if ($userPost->status == UserPost::STATUS_REQUEST )

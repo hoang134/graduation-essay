@@ -29,9 +29,16 @@ class MessengerController extends Controller
     public function lecturer(Request $request)
     {
 
+        $idStudent = $request->id;
+
         $messengers = DB::table('messengers')->where('user_id_from',Auth::user()->id)
             ->where('user_id_to',$request->id)
-            ->orWhere('user_id_to',Auth::user()->id)->where('user_id_from',$request->id);
+            ->orWhere('user_id_to',Auth::user()->id)->where('user_id_from',$request->id)->get();
+
+        return view('admin.messenger.lecturer',[
+            'messengers'=>$messengers,
+            'idStudent'=>$idStudent
+        ]);
 
 
     }

@@ -18,6 +18,7 @@
                     <th>giảng viên</th>
                     <th>Tên sinh viên</th>
                     <th>đánh giá</th>
+                    <th>nhắn tin</th>
                     <th>Duyệt đề tài</th>
                 </tr>
                 </thead>

@@ -78,9 +78,9 @@ Route::prefix('admin')->middleware('CheckRole')->group(function () {
     Route::post('protect/post/note/{id}','ProtectPostController@note')->name("protect.note");
 
     Route::get('score/post','ScorePostController@index')->name('score.post');
+    Route::post('score/post/save','ScorePostController@save')->name('score.save');
 
-    Route::get('messenger/lecturer{id}','MessengerController@assessor')->name('lecturer.messenger');
-    Route::post('messenger/lecturer/save/{id}','MessengerController@save')->name('lecturer.messenger.save');
+    Route::get('messenger/lecturer/{id}','MessengerController@lecturer')->name('lecturer.messenger');
     Route::get('messenger/assessor/{id}','MessengerController@assessor')->name('assessor.messenger');
     Route::post('messenger/assessor/save/{id}','MessengerController@save')->name('assessor.messenger.save');
 
