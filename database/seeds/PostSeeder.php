@@ -21,7 +21,7 @@ class PostSeeder extends Seeder
         $post = new Post();
         $post->title = "đề tài 2";
         $post->content = "thực tập chuyên ngành 2";
-        $post->quantity = 1;
+        $post->quantity = 2;
         $post->save();
         $post = new Post();
 

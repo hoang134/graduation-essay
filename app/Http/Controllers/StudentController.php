@@ -23,7 +23,7 @@ class StudentController extends Controller
         {
             $quantityUserPost = DB::table('user_posts')->where('post_id',$post->id)
                 ->where('status_register',UserPost::STATUS_REGISTER_REQUEST)
-                ->count('*');
+                ->count('status_register');
 
             array_push($quantityUserPosts,["$post->id"=>"$quantityUserPost"]);
         }

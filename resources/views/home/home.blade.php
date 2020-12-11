@@ -20,7 +20,7 @@
 <script src="{{asset('js/libs2/morris.js')}}"></script>
 
 
-</style>
+
 </head>
 <body>
 <section id="container">
@@ -87,6 +87,12 @@
                     <a href="/student/report">
                         <i class="fa fa-file-text"></i>
                         <span>Báo cáo tuần</span>
+                    </a>
+                </li>
+                <li class="sub-menu">
+                    <a href="/student/messenger">
+                        <i class="fa fa-file-text"></i>
+                        <span>Tin nhắn</span>
                     </a>
                 </li>
             </ul>
