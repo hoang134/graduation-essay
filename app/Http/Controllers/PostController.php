@@ -66,10 +66,12 @@ class PostController extends Controller
 
     public function delete(Request $request){
 
+
     $post = Post::find($request->id);
-    UserPost::where('post_id',$request->id)->delete();
+
     $this->authorize('delete',$post);
     $post->delete();
+    UserPost::where('post_id',$request->id)->delete();
 
     return redirect()->route('post')->with('success', "Xóa thành công!");
 

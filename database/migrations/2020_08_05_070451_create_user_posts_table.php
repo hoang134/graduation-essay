@@ -22,7 +22,7 @@ class CreateUserPostsTable extends Migration
             $table->string('note_2')->default('---');
             $table->float('scores')->default(0.0);
             $table->enum('type',[UserPost::TYPE_REGISTER,UserPost::TYPE_POST]);
-            $table->string('status_register')->default(UserPost::STATUS_REGISTER_REQUEST);
+            $table->string('status_register')->nullable();
             $table->string('status')->default(UserPost::STATUS_ELIMINATED);
 
             $table->timestamps();
