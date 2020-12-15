@@ -2,6 +2,14 @@
 @section('title', 'Xác nhận bảo vệ khóa luận')
 
 @section('content')
+<head>
+    <style type="text/css">
+        th,td {
+            border-left: 1px solid #dee2e6;
+            border-right: 1px solid #dee2e6;
+        }
+    </style>
+</head>
     <h2>Xác nhận bảo vệ khóa luận</h2>
 
     <div class="table-responsive">

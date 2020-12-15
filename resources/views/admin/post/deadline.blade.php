@@ -2,6 +2,14 @@
 @section('title', 'thời gian đăng ký đề tài khóa luận')
 
 @section('content')
+<head>
+    <style type="text/css">
+        th,td {
+            border-left: 1px solid #dee2e6;
+            border-right: 1px solid #dee2e6;
+        }
+    </style>
+</head>
     <h2>Quản lý thời gian đăng ký đề tài khóa luận</h2>
     <button type="button" class="btn btn-primary edit" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">tất cả thời hạn</button>
     <div class="table-responsive">

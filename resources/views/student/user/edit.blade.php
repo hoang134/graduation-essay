@@ -3,57 +3,66 @@
 @section('title', 'đề tài')
 
 @section('content')
-<body>
-    <center><h1>Sửa thông tin tài khoản</h1></center>
-    <br>
-    <div style="font-size: 20px">
-            
-            <form class="form-horizontal bucket-form" action="{{route('student.save',['id'=>$user->id])}}" method="post">
-            @csrf
-            <div class="form-group">
-                <div class="col-lg-6">
-                    Họ tên
-                    <div class="input-group m-bot15">
-                        <span class="input-group-addon btn-success">@</span>
-                        <input type="text" class="form-control" name="name" value="{{$user->name}}">
-                    </div>
-                    Ngày sinh
-                    <div class="input-group m-bot15">
-                        <span class="input-group-addon btn-success">@</span>
-                        <input type="text" class="form-control" name="birthday" value=" {{$user->birthday}}">
-                    </div>
-                    Mã số sinh viên
-                    <div class="input-group m-bot15">
-                        <span class="input-group-addon btn-success">@</span>
-                        <input type="text" class="form-control" name="code" value=" {{$user->code}}">
-                    </div>
-                    Lớp
-                    <div class="input-group m-bot15">
-                        <span class="input-group-addon btn-success">@</span>
-                        <input type="text" class="form-control" name="class" value="{{$user->class}}">
-                    </div>
-                    Giới tính
-                    <div class="input-group m-bot15">
-                        <input style="margin-right: 10px" type="radio" name="gender" value="Nam">Nam
-                      <input type="radio" name="gender" value="Nữ">Nữ
-                    </div>
-                    Mật khẩu mới
-                    <div class="input-group m-bot15">
-                        <span class="input-group-addon btn-success">@</span>
-                        <input type="password" class="form-control" name="password" value="">
-                    </div>
-                    Xác nhận mật khẩu
-                    <div class="input-group m-bot15">
-                        <span class="input-group-addon btn-success">@</span>
-                        <input type="password" class="form-control" name="password_confirmation" value="">
-                    </div>
 
-                    <input type="submit" class="btn btn-primary"><br>
+<div class="table-agile-info">
+    <h2>Sửa thông tin tài khoản </h2><br>
+    
+        <form class="form-horizontal bucket-form" action="{{route('student.save',['id'=>$user->id])}}" method="post">
+            @csrf
+            <div class="form-group row">
+                <label for="code" class="col-sm-2 col-form-label">Họ tên</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="name" value="{{$user->name}}">
                 </div>
             </div>
+
+            <div class="form-group row">
+                <label for="code" class="col-sm-2 col-form-label">Ngày sinh</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="birthday" value=" {{$user->birthday}}">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="code" class="col-sm-2 col-form-label">Mã số sinh viên</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="name" value="{{$user->code}}">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="code" class="col-sm-2 col-form-label">Lớp</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="name" value="{{$user->class}}">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="code" class="col-sm-2 col-form-label">Giới tính</label>
+                <div class="col-sm-10">
+                    <input style="margin-right: 10px" type="radio" name="gender" value="Nam">Nam
+                    <input type="radio" name="gender" value="Nữ">Nữ
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="code" class="col-sm-2 col-form-label">Mật khẩu mới</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" name="password" value="">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="code" class="col-sm-2 col-form-label">Nhập lại mật khẩu</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" name="password_confirmation" value="">
+                </div>
+            </div>
+            
+
+            <input type="submit" class="btn btn-primary"><br>
         </form>
-    </div>
-    @if ($errors->any())
+     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
                 @foreach ($errors->all() as $error)
@@ -62,7 +71,6 @@
             </ul>
         </div>
     @endif
-</body>
-
+</div>
 @endsection
 

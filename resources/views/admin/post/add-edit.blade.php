@@ -2,11 +2,10 @@
 @section('title', 'đề tài')
 
 @section('content')
-    <h2>@if(isset($post)) Sửa đề tài @else Thêm đề tài  @endif </h2>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-8">
-                <form action="{{isset($post)? route("post.save",['id'=>$post->id]):route('post.save')}}" method="post">
+
+<div class="table-agile-info">
+    <h2>@if(isset($post)) Sửa đề tài @else Thêm đề tài  @endif </h2><br>
+            <form action="{{isset($post)? route("post.save",['id'=>$post->id]):route('post.save')}}" method="post">
                     @csrf
 
                     <div class="form-group row">
@@ -33,7 +32,7 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="quantity" class="col-sm-2 col-form-label">số lượng</label>
+                        <label for="quantity" class="col-sm-2 col-form-label">Số lượng</label>
                         <div class="col-sm-10">
                             <input type="number" class="form-control" id="quantity" name="quantity"
                                    value="{{ old('quantity', isset($post) ? $post->quantity: '') }}">
@@ -58,9 +57,7 @@
                         </div>
                     @endif
                 </form>
-            </div>
-        </div>
-    </div>
-
+   
+</div>
 @endsection
 

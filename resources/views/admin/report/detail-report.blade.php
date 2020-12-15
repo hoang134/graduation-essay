@@ -2,23 +2,33 @@
 @section('title', 'Quản lý báo cáo')
 
 @section('content')
-    <h2>chi tiết báo cáo</h2>
+<head>
+    <style type="text/css">
+        th,td {
+            border-left: 1px solid #dee2e6;
+            border-right: 1px solid #dee2e6;
+        }
+    </style>
+</head>
 
+<div class="table-agile-info">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Chi tiết báo cáo
+    </div>
     <div class="table-responsive">
-        <table class="table table-striped table-sm">
-            <thead>
-            <tr>
-                <th>Id</th>
-                <th>tên báo cáo</th>
-                <th>nội dung</th>
-                <th>tên sinh viên</th>
-                <th>file báo cáo</th>
-            </tr>
-            </thead>
-
-            <tbody>
-
-            @foreach($reports as $report)
+      <table class="table table-striped b-t b-light">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Tên báo cáo</th>
+            <th>Nội dung</th>
+            <th>Tên sinh viên</th>
+            <th>File báo cáo</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach($reports as $report)
                 <tr>
                     <td>{{$report->id}}</td>
                     <td>{{$report->title}}</td>
@@ -44,11 +54,11 @@
                 </tr>
 
             @endforeach
-            </tbody>
-
-        </table>
-
+        </tbody>
+      </table>
     </div>
+  </div>
+</div>
 @endsection
 @section('script')
     <script>

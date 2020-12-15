@@ -3,8 +3,9 @@
 
 @section('content')
 <body>
-    <center><h1>Quản lý báo cáo</h1></center>
-    <div>
+    
+    <div class="table-agile-info">
+        <h1>Quản lý báo cáo</h1><br>
         <form class="form-horizontal bucket-form" method="post" action="{{isset($report)? route('student.report.save',['id'=>"$report->id"]) :route('student.report.save')}}"
                       method="post"enctype="multipart/form-data">
                       @csrf

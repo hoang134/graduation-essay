@@ -2,88 +2,91 @@
 @section('title', 'báo cáo tuần')
 
 @section('content')
-    <head>
-        <link rel="stylesheet" href="{{ '/css/admin.css' }}">
-        <style type="text/css">
-            th,td {
-                border-left: 1px solid #dee2e6;
-                border-right: 1px solid #dee2e6;
-            }
-        </style>
-    </head>
-    <body>
-    <center><h1>Báo cáo tuần</h1></center>
+<head>
+    <style type="text/css">
+        th,td {
+            border-left: 1px solid #dee2e6;
+            border-right: 1px solid #dee2e6;
+        }
+    </style>
+</head>
 
+<div class="table-agile-info">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Báo cáo tuần
+    </div>
     @if(session()->has('empty'))
-
     @endif
     <div class="table-responsive">
-        <table class="table table-striped table-sm">
-            <tr style="background-color: #555;">
-                <th>Id</th>
-                <th>Tiêu đề báo cáo</th>
-                <th>tên đề tài</th>
-                <th>thời hạn</th>
-                <th>thực hện</th>
-                <th>Nhận xét</th>
-            </tr>
+      <table class="table table-striped b-t b-light">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Tiêu đề báo cáo</th>
+            <th>Tên đề tài</th>
+            <th>Thời hạn</th>
+            <th>Thực hện</th>
+            <th>Nhận xét</th>
+          </tr>
+        </thead>
+        <tbody>
             @php
                 $i=0;
             @endphp
             @foreach($topicReports as $topicReport)
-                <tr>
-                    <td>{{$topicReport->id}}</td>
-                    <td> {{$topicReport->title}}</td>
-                    <td> {{$post->title}}</td>
-                    <td> {{$topicReport->deadline}}</td>
+          <tr>
+            <td>{{$topicReport->id}}</td>
+            <td> {{$topicReport->title}}</td>
+            <td> {{$post->title}}</td>
+            <td> {{$topicReport->deadline}}</td>
 
-                        @if($isReports[$i][$topicReport->id]=='empty')
-                            <td>
-                                @if($isExpireds[$i][$topicReport->id]=='false')
-                                    <a href="{{route('student.report.create',['topic_id'=>"$topicReport->id"])}}">nộp báo cáo</a>
-                                @else
-                                    <span style="color: #ff0000"> hết hạn nộp</span>
-                                @endif
-                            </td>
+                @if($isReports[$i][$topicReport->id]=='empty')
+                    <td>
+                        @if($isExpireds[$i][$topicReport->id]=='false')
+                            <a style="color:#27b722;" href="{{route('student.report.create',['topic_id'=>"$topicReport->id"])}}"><i class="fa fa-check text-success text-active"></i> Nộp báo cáo</a>
                         @else
-                            <td>
-                                @if($isExpireds[$i][$topicReport->id]=='false')
-                                    <a style="margin-right: 20px" href="{{route('student.report.edit',[$topicReport->id])}}">sửa</a>
-                                @else
-                                    <span style="color: #ff0000"> hết hạn nộp</span>
-                                @endif
-                                <a href="{{route('student.report.download',[$topicReport->id])}}">xem file báo cáo </a>
-                            </td>
+                            <span style="color: #ff0000"><i class="fa fa-times text-danger text"></i> Hết hạn nộp</span>
+                        @endif
+                    </td>
+                @else
+                    <td>
+                        @if($isExpireds[$i][$topicReport->id]=='false')
+                            <a style="margin-right: 20px" href="{{route('student.report.edit',[$topicReport->id])}}"><i class="fa fa-pencil-square-o"></i> Sửa</a>
+                        @else
+                            <span style="color: #ff0000"><i class="fa fa-times text-danger text"></i> Hết hạn nộp</span>
+                        @endif
+                        <a href="{{route('student.report.download',[$topicReport->id])}}"><i class="fa fa-eye"></i> Xem file báo cáo </a>
+                    </td>
 
+                <td>
+                    <button class="click" value="{{$topicReport->id}}">Nhận xét</button>
+                    <tr id="{{$topicReport->id}}" class="all" style="display: none">
                         <td>
-                            <button class="click" value="{{$topicReport->id}}">Nhận xét</button>
-                                <tr id="{{$topicReport->id}}" class="all" style="display: none">
-                                    <td>
-                                        <div class="{{$topicReport->id}}"></div>
-                                        <br>
-                                        <form id="form-{{$topicReport->id}}" method="post" action="{{route('comment.create')}}">
-                                            @csrf
-                                            <label>
-                                                <input name="contents" class="contents">
-                                            </label>
-                                            <input name="topic_id" type="hidden" value="{{$topicReport->id}}">
-                                            <button  class="btn btn-success save-data" value="{{$topicReport->id}}"> Gửi </button>
-                                        </form>
-                                    </td>
-                                </tr>
+                            <div class="{{$topicReport->id}}"></div>
+                            <br>
+                            <form id="form-{{$topicReport->id}}" method="post" action="{{route('comment.create')}}">
+                                @csrf
+                                <label>
+                                    <input name="contents" class="contents">
+                                </label>
+                                <input tabindex="2" name="topic_id" type="hidden" class="form-control" value="{{$topicReport->id}}">
+                                <button  class="btn btn-success save-data" value="{{$topicReport->id}}"> Gửi </button>
+                            </form>
                         </td>
-                    @endif
-                </tr>
-
+                    </tr>
+                </td>
+            @endif
+          </tr>
         @php
             $i++;
         @endphp
-
         @endforeach
-
-        </table>
+        </tbody>
+      </table>
     </div>
-
+  </div>
+</div>
 
     <script src="{{ '/js/libs/jquery-3.4.1.min.js' }}"></script>
     <script src="{{ '/js/libs/bootstrap.bundle.min.js' }}"></script>

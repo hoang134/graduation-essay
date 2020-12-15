@@ -2,38 +2,45 @@
 @section('title', 'Đề xuất khóa luận')
 
 @section('content')
-    <h2>Đề xuất khóa luận</h2>
+<head>
+    <style type="text/css">
+        th,td {
+            border-left: 1px solid #dee2e6;
+            border-right: 1px solid #dee2e6;
+        }
+    </style>
+</head>
 
-    <div class="table-responsive">
+<div class="table-agile-info">
+    <h2>Đề xuất khóa luận </h2><br>
         <select id="post">
-        @foreach($posts as $post)
-                <option  value="{{$post->id}}">{{$post->title}}</option>
-        @endforeach
-            </select>
-            <table class="table table-striped table-sm">
-                <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>tên đề tài</th>
-                    <th>giảng viên</th>
+            @foreach($posts as $post)
+            <option  value="{{$post->id}}">{{$post->title}}</option>
+            @endforeach
+        </select>
+    <div class="panel panel-default">
+        <div class="table-responsive">
+          <table class="table table-striped b-t b-light">
+            <thead>
+              <tr>
+                <th>Id</th>
+                    <th>Tên đề tài</th>
+                    <th>Giảng viên</th>
                     <th>Tên sinh viên</th>
-                    <th>đánh giá</th>
-                    <th>nhắn tin</th>
+                    <th>Đánh giá</th>
+                    <th>Nhắn tin</th>
                     <th>Duyệt đề tài</th>
-                </tr>
-                </thead>
+              </tr>
+            </thead>
+            <tbody id="content">
 
-                <tbody id="content">
-
-                </tbody>
-
-            </table>
-
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            </tbody>
+          </table>
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Dánh giá</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Đánh giá</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -48,14 +55,15 @@
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary save-data">lưu</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">đóng</button>
+                        <button type="button" class="btn btn-primary save-data">Lưu</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
                     </div>
                 </div>
             </div>
         </div>
-
+        </div>
     </div>
+</div>
 
 @endsection
 

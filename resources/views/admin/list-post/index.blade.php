@@ -2,6 +2,14 @@
 @section('title', 'Quản lý tài khoản')
 
 @section('content')
+<head>
+    <style type="text/css">
+        th,td {
+            border-left: 1px solid #dee2e6;
+            border-right: 1px solid #dee2e6;
+        }
+    </style>
+</head>
     <h2>Quản lý danh sách đăng ký đề tài</h2>
     <a href="{{route('user.create')}}">Thêm đề tài khoản</a>
     <div class="table-responsive">

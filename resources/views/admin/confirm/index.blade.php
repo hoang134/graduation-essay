@@ -2,6 +2,14 @@
 @section('title', 'Duyệt Khóa luận')
 
 @section('content')
+<head>
+    <style type="text/css">
+        th,td {
+            border-left: 1px solid #dee2e6;
+            border-right: 1px solid #dee2e6;
+        }
+    </style>
+</head>
     <h2>Duyệt Khóa luận</h2>
 
     <div class="table-responsive">

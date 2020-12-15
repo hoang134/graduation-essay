@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-<title>Trang quản lý khóa luận tốt nghiệp</title>
+<title>@yield('title')</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
@@ -36,13 +36,9 @@
 <div class="nav notify-row" id="top_menu">
     <ul class="nav top-menu">
         <li id="header_inbox_bar" class="dropdown">
-            <a data-toggle="dropdown" class="dropdown-toggle" href ="/student/messenger">
+            <a href ="/student/messenger">
                 <i class="fa fa-envelope"></i>
             </a>
-            <ul class="dropdown-menu extended inbox">
-                <li>
-                </li>
-            </ul>
         </li>
     </ul>
 </div>
@@ -87,12 +83,6 @@
                     <a href="/student/report">
                         <i class="fa fa-file-text"></i>
                         <span>Báo cáo tuần</span>
-                    </a>
-                </li>
-                <li class="sub-menu">
-                    <a href="/student/messenger">
-                        <i class="fa fa-file-text"></i>
-                        <span>Tin nhắn</span>
                     </a>
                 </li>
             </ul>
