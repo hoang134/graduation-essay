@@ -161,7 +161,7 @@
 <script src="{{ '/js/libs/bootstrap.bundle.min.js' }}"></script>
 <script src="{{ '/js/libs/feather.min.js' }}"></script>
 <script src="{{ '/js/libs/toastr.min.js' }}"></script>
-<script>
+<!-- <script>
     feather.replace();
     @if(isset($activeMenu))
     $('.{{ $activeMenu }}').addClass('active');
@@ -174,7 +174,7 @@
 {{--    @endif--}}
 
 
-</script>
+</script> -->
 @yield('script')
 </body>
 </html>

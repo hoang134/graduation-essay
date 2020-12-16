@@ -13,7 +13,6 @@
 </head>
 
 <div class="table-agile-info">
-  <div class="panel panel-default">
     <div class="panel-heading">
       @if(isset($topicReport)) Sửa chủ đề báo cáo @else Thêm chủ đề báo cáo  @endif
     </div>
@@ -32,13 +31,13 @@
             @if(!isset($topicReport))
                 <div class="form-group row">
                 <label for="code" class="col-sm-2 col-form-label"> Chọn đề tài</label>
-
+                <div class="col-sm-10">
                     <select id ='post_id' name ="post_id" >
                         @foreach($posts as $post)
                              <option value="{{$post->id}}">{{$post->title}}</option>
                          @endforeach
                     </select>
-
+                </div>
                 </div>
             @endif
 
@@ -67,7 +66,6 @@
             @endif
         </form>
     </div>
-  </div>
 </div>
 @endsection
 

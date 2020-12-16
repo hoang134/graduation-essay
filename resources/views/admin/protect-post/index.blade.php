@@ -10,39 +10,41 @@
         }
     </style>
 </head>
-    <h2>Xác nhận bảo vệ khóa luận</h2>
 
-    <div class="table-responsive">
-        <select id="post">
-        @foreach($posts as $post)
-                <option  value="{{$post->id}}">{{$post->title}}</option>
-        @endforeach
-            </select>
-        <form id="idForm">
-            @csrf
-            <table class="table table-striped table-sm">
-                <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>tên đề tài</th>
-                    <th>giảng viên</th>
-                    <th>Tên sinh viên</th>
-                    <th>đánh giá</th>
-                    <th>Nhắn tin</th>
-                    <th>Xác nhận bảo đề tài</th>
-                </tr>
-                </thead>
-
-                    <tbody id="content">
-
-                    </tbody>
-
-            </table>
-            <button  style="float: right;margin-right: 60px " type="submit" class="btn-success submit">Xác nhận</button>
-        </form>
+<div class="table-agile-info">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Xác nhận bảo vệ khóa luận
     </div>
+    <select id="post">
+        @foreach($posts as $post)
+            <option  value="{{$post->id}}">{{$post->title}}</option>
+        @endforeach
+    </select>
+    <form id="idForm">
+        @csrf
+    <div class="table-responsive">
+      <table class="table table-striped b-t b-light">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Tên đề tài</th>
+            <th>Giảng viên</th>
+            <th>Tên sinh viên</th>
+            <th>Đánh giá</th>
+            <th>Nhắn tin</th>
+            <th>Xác nhận bảo đề tài</th>
+          </tr>
+        </thead>
+        <tbody id="content">
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        </tbody>
+      </table>
+    </div>
+    <button  style="float: right;margin-right: 60px " type="submit" class="btn-success submit">Xác nhận</button>
+</form>
+  </div>
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -67,7 +69,7 @@
             </div>
         </div>
     </div>
-
+</div>
 @endsection
 
 @section('script')

@@ -8,7 +8,6 @@
             <div class="col-8">
                 <form action="" method="post">
                     @csrf
-
                     <div class="form-group row">
                         <label for="code" class="col-sm-2 col-form-label">Tên đề tài</label>
                         <div class="col-sm-10">

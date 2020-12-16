@@ -59,7 +59,6 @@
                 </div>
             </div>
             
-
             <input type="submit" class="btn btn-primary"><br>
         </form>
      @if ($errors->any())
