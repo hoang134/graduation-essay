@@ -92,7 +92,7 @@ class ReportController extends Controller
             $reprot->path = $path;
             $reprot->save();
 
-            return redirect()->route('student.post.viewpost');
+            return redirect()->route('student.report.index');
 
         }
 
@@ -106,15 +106,14 @@ class ReportController extends Controller
             $report->content = $request->contents;
             if(isset($request->file)){
                 Storage::delete($report->path);
-                $file=$request->file('file');
+                $file = $request->file('file');
                 $path = Storage::put('report', $file);
                 $report->path = $path;
+                $report->save();
             }
 
-            $report->save();
 
-
-            return redirect()->route('home');
+            return redirect()->route('student.report.index');
 
         }
 

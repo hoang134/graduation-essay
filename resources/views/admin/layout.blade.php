@@ -66,7 +66,7 @@
 
                 <li class="sub-menu">
                     <a href="/admin/user">
-                        <i class="fa fa-check-circle"></i>
+                        <i class="fa fa-check-circle "></i>
                         <span>Tài khoản</span>
                     </a>
                 </li>
@@ -89,6 +89,14 @@
                 </li>
                 @endcan
 
+                @can('assessor',\App\User::class)
+                <li class="sub-menu">
+                    <a href="/admin/post/deadline">
+                        <i class="fa fa-file-text"></i>
+                        <span>Thời gian đăng ký khóa luận</span>
+                    </a>
+                </li>
+                @endcan
                 @can('lecturers',\App\User::class)
                 <li class="sub-menu">
                     <a href="/admin/post/verify/register">
@@ -113,12 +121,6 @@
                     </a>
                 </li>
 
-                <li class="sub-menu">
-                    <a href="/admin/post/deadline">
-                        <i class="fa fa-file-text"></i>
-                        <span>Thời gian đăng ký khóa luận</span>
-                    </a>
-                </li>
 
                 <li class="sub-menu">
                     <a href="/admin/protect/post">
@@ -169,10 +171,6 @@
     @if(session('success'))
     toastr.success('{{ session('success') }}');
     @endif
-{{--    @if(session('error'))--}}
-{{--    toastr.error('123');--}}
-{{--    @endif--}}
-
 
 </script>
 @yield('script')

@@ -16,7 +16,7 @@ class UserController extends Controller
     public function index()
     {
         $this->authorize('viewAny', User::class);
-        $users = User::all();
+        $users = User::paginate(10);
         return view('admin.user.index',[
             'activeMenu'=> $this->activeMenu,
             'users'=>$users
@@ -42,7 +42,7 @@ class UserController extends Controller
         ]);
     }
 
-    public function delete(Request $request ,$id)
+    public function delete(Request $request )
     {
         $user = User::find($request->id);
         $this->authorize('delete', $user);

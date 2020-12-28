@@ -6,7 +6,7 @@
 
 <div class="table-agile-info">
     <h2>Sửa thông tin tài khoản </h2><br>
-    
+
         <form class="form-horizontal bucket-form" action="{{route('student.save',['id'=>$user->id])}}" method="post">
             @csrf
             <div class="form-group row">
@@ -26,7 +26,7 @@
             <div class="form-group row">
                 <label for="code" class="col-sm-2 col-form-label">Mã số sinh viên</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="name" value="{{$user->code}}">
+                    <input type="text" class="form-control" name="code" value="{{$user->code}}">
                 </div>
             </div>
 
@@ -58,7 +58,7 @@
                     <input type="password" class="form-control" name="password_confirmation" value="">
                 </div>
             </div>
-            
+
 
             <input type="submit" class="btn btn-primary"><br>
         </form>

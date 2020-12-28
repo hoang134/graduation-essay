@@ -54,7 +54,10 @@ class TopicReportController extends Controller
 
     public function delete( Request $request)
     {
-
+       $topicReport = TopicReport::find($request->id);
+        Report::where('topic_report_id',"$topicReport->id")->delete();
+        $topicReport->delete();
+        return redirect()->route('topic.report');
     }
 
     public function detailReport(Request $request)
