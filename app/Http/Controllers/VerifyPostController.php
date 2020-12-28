@@ -47,7 +47,7 @@ class VerifyPostController extends Controller
                 if ($userPost->status == UserPost::STATUS_ELIMINATED )
                     echo"<td> <button data-id = '{$user->id}' class='verify btn-danger' value = 'Chưa đạt' > Chưa đạt</button></td>";
                 if ($userPost->status == UserPost::STATUS_REQUEST )
-                    echo"<td> <button  data-id = '{$user->id}' class='verify btn-success' value = 'Đề xuất' >đề xuất</button></td>";
+                    echo"<td> <button  data-id = '{$user->id}' class='verify btn-success' value = 'Đề xuất' >Đề xuất</button></td>";
                 if ($userPost->status == UserPost::STATUS_QUALIFIED )
                     echo"<td> <span>Đạt yêu cầu</span></td>";
                 if ($userPost->status == UserPost::STATUS_FINISH )

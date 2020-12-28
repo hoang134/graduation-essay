@@ -24,7 +24,6 @@ class CreateUserPostsTable extends Migration
             $table->enum('type',[UserPost::TYPE_REGISTER,UserPost::TYPE_POST]);
             $table->string('status_register')->nullable();
             $table->string('status')->default(UserPost::STATUS_ELIMINATED);
-
             $table->timestamps();
         });
     }

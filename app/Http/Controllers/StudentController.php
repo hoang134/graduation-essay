@@ -21,8 +21,9 @@ class StudentController extends Controller
 
         foreach ($posts as $post)
         {
-            $quantityUserPost = DB::table('user_posts')->where('post_id',$post->id)
-                ->where('status_register',UserPost::STATUS_REGISTER_REQUEST)
+            $quantityUserPost = DB::table('user_posts')
+                ->where('post_id',$post->id)->where('status_register',UserPost::STATUS_REGISTER_REQUEST)
+                ->orWhere('status_register',UserPost::STATUS_REGISTER_FINISH)->where('post_id',$post->id)
                 ->count('status_register');
 
             array_push($quantityUserPosts,["$post->id"=>"$quantityUserPost"]);
@@ -55,7 +56,7 @@ class StudentController extends Controller
         }
 
         $userpost = New UserPost();
-        $userpost->user_id =$request->user_id;
+        $userpost->user_id = $request->user_id;
         $userpost->post_id = $request->post_id;
         $userpost->status_register = UserPost::STATUS_REGISTER_REQUEST;
         $userpost->type = UserPost::TYPE_REGISTER;
@@ -86,6 +87,7 @@ class StudentController extends Controller
     public function deletePost()
     {
         DB::table('user_posts')->where('user_id',Auth::user()->id)->delete();
+
         return redirect()->route('student.post');
     }
 
