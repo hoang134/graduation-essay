@@ -42,7 +42,7 @@ class VerifyRegisterPost extends Controller
             if ($userPost->status_register == UserPost::STATUS_REGISTER_FINISH )
                 echo"<td> <button data-id = '{$user->id}' class='verify btn-success' value = 'Hoàn thành đăng ký' > Đồng ý</button></td>";
             else
-                echo"<td> <button  data-id = '{$user->id}' class='verify btn-danger' value = 'Đề xuất' >đề xuất</button></td>";
+                echo"<td> <button  data-id = '{$user->id}' class='verify btn-danger' value = 'Đề xuất' >Đề xuất</button></td>";
             echo "</tr>";
         }
     }
