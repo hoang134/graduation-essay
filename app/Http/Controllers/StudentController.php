@@ -58,6 +58,7 @@ class StudentController extends Controller
         $userpost->user_id =$request->user_id;
         $userpost->post_id = $request->post_id;
         $userpost->status_register = UserPost::STATUS_REGISTER_REQUEST;
+        $userpost->type = UserPost::TYPE_REGISTER;
         $userpost->save();
         return redirect()->route('student.post')->with('success','Đăng ký thành công');
     }
