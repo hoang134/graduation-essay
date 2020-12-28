@@ -28,7 +28,7 @@ class ReportController extends Controller
         $topicReports = DB::table('topic_reports')->where('post_id', $post->id)->get();
 
         foreach ($topicReports as $topicReport) {
-            $isReport = DB::table('Reports')->where('topic_report_id', $topicReport->id)
+            $isReport = DB::table('reports')->where('topic_report_id', $topicReport->id)
                 ->where('user_id',Auth::user()->id)->get();
 
             if($topicReport->deadline > date('Y-m-d'))
