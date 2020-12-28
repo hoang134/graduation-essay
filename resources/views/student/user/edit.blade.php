@@ -58,8 +58,12 @@
                     <input type="password" class="form-control" name="password_confirmation" value="">
                 </div>
             </div>
+<<<<<<< HEAD
 
 
+=======
+            
+>>>>>>> 3646dd57e877f63dafe3980cb45af81f84420af5
             <input type="submit" class="btn btn-primary"><br>
         </form>
      @if ($errors->any())

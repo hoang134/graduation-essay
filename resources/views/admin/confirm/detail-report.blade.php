@@ -10,36 +10,37 @@
         }
     </style>
 </head>
-    <h2>danh sách báo cáo</h2>
 
-    <div class="table-responsive">
-        <table class="table table-striped table-sm">
-            <thead>
-            <tr>
-                <th>Id</th>
-                <th>tên báo cáo</th>
-                <th>nội dung</th>
-                <th>tên sinh viên</th>
-                <th>file báo cáo</th>
-            </tr>
-            </thead>
-
-            <tbody>
-
-            @foreach($reports as $report)
-                <tr>
-                    <td>{{$report->id}}</td>
-                    <td>{{$report->title}}</td>
-                    <td>{{$report->content}}</td>
-                    <td>{{$report->user()->first()->name}}</td>
-                    <td><a href="{{route('topic.report.download',['id'=>$report->id])}}">{{$report->title}}</a></td>
-                </tr>
-
-            @endforeach
-            </tbody>
-
-        </table>
-
+<div class="table-agile-info">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Danh sách báo cáo
     </div>
+    <div class="table-responsive">
+      <table class="table table-striped b-t b-light">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Tên báo cáo</th>
+            <th>Nội dung</th>
+            <th>Tên sinh viên</th>
+            <th>File báo cáo</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach($reports as $report)
+            <tr>
+                <td>{{$report->id}}</td>
+                <td>{{$report->title}}</td>
+                <td>{{$report->content}}</td>
+                <td>{{$report->user()->first()->name}}</td>
+                <td><a href="{{route('topic.report.download',['id'=>$report->id])}}">{{$report->title}}</a></td>
+            </tr>
+            @endforeach
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 @endsection
 

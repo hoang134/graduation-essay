@@ -10,40 +10,45 @@
         }
     </style>
 </head>
-    <h2>Quản lý thời gian đăng ký đề tài khóa luận</h2>
-    <button type="button" class="btn btn-primary edit" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">tất cả thời hạn</button>
+
+<div class="table-agile-info">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Quản lý thời gian đăng ký khóa luận
+    </div>
+    <button type="button" class="btn btn-primary edit" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Tất cả thời hạn</button>
     <div class="table-responsive">
-        <table class="table table-striped table-sm">
-            <thead>
+      <table class="table table-striped b-t b-light">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Giảng Viên</th>
+            <th>Tên đề tài</th>
+            <th>Nội dung</th>
+            <th>Thời gian đăng ký</th>
+            <th>Thực hiện</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach($posts as $post)
             <tr>
-                <th>Id</th>
-                <th>Giảng Viên</th>
-                <th>Tên đề tài</th>
-                <th>Nội dung</th>
-                <th>thời gian đăng ký</th>
-                <th>Thực hiện</th>
+                <td>{{$post->id}}</td>
+                <td>{{$post->lecturer->first()->name}}</td>
+                <td>{{$post->title}}</td>
+                <td>{{$post->content}}</td>
+                <td>{{$post->deadline}}</td>
+                <td><button id="{{$post->id}}" type="button" class="btn btn-primary edit" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Sửa thời gian</button></td>
             </tr>
-            </thead>
-            <tbody>
-
-            @foreach($posts as $post)
-                <tr>
-                    <td>{{$post->id}}</td>
-                    <td>{{$post->lecturer->first()->name}}</td>
-                    <td>{{$post->title}}</td>
-                    <td>{{$post->content}}</td>
-                    <td>{{$post->deadline}}</td>
-                    <td><button id="{{$post->id}}" type="button" class="btn btn-primary edit" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">sửa thời gian</button></td>
-                </tr>
-            @endforeach
-            </tbody>
-        </table>
-
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        @endforeach
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">thời hạn</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Thời hạn</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -57,14 +62,13 @@
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary save-data">lưu</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">đóng</button>
+                        <button type="button" class="btn btn-primary save-data">Lưu</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
                     </div>
                 </div>
             </div>
         </div>
-
-    </div>
+</div>
 @endsection
 @section('script')
 

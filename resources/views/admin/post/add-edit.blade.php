@@ -4,7 +4,10 @@
 @section('content')
 
 <div class="table-agile-info">
-    <h2>@if(isset($post)) Sửa đề tài @else Thêm đề tài  @endif </h2><br>
+    <div class="panel-heading">
+      @if(isset($post)) Sửa đề tài @else Thêm đề tài  @endif
+    </div>
+    <br>
             <form action="{{isset($post)? route("post.save",['id'=>$post->id]):route('post.save')}}" method="post">
                     @csrf
 

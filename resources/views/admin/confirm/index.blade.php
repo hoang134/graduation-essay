@@ -10,37 +10,41 @@
         }
     </style>
 </head>
-    <h2>Duyệt Khóa luận</h2>
 
-    <div class="table-responsive">
-        <select id="post">
-        @foreach($posts as $post)
-                <option  value="{{$post->id}}">{{$post->title}}</option>
-        @endforeach
-            </select>
-        <form id="idForm">
-            @csrf
-            <table class="table table-striped table-sm">
-                <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>tên đề tài</th>
-                    <th>giảng viên</th>
-                    <th>Tên sinh viên</th>
-                    <th>báo cáo tuần</th>
-                    <th>nhận xét của giảng viên</th>
-                    <th>Duyệt đề tài</th>
-                </tr>
-                </thead>
-
-                    <tbody id="content">
-
-                    </tbody>
-
-            </table>
-            <button  style="float: right;margin-right: 60px " type="submit" class="btn-success submit">Xác nhận</button>
-        </form>
+<div class="table-agile-info">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Duyệt khóa luận
     </div>
+    <select id="post">
+        @foreach($posts as $post)
+            <option  value="{{$post->id}}">{{$post->title}}</option>
+        @endforeach
+    </select>
+    <form id="idForm">
+        @csrf
+    <div class="table-responsive">
+      <table class="table table-striped b-t b-light">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Tên đề tài</th>
+            <th>Giảng viên</th>
+            <th>Tên sinh viên</th>
+            <th>Báo cáo tuần</th>
+            <th>Nhận xét của giảng viên</th>
+            <th>Duyệt đề tài</th>
+          </tr>
+        </thead>
+        <tbody id="content">
+
+        </tbody>
+      </table>
+    </div>
+    <button  style="float: right;margin-right: 60px " type="submit" class="btn-success submit">Xác nhận</button>
+</form>
+  </div>
+</div>
 @endsection
 
 @section('script')

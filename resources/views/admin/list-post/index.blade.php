@@ -10,31 +10,39 @@
         }
     </style>
 </head>
-    <h2>Quản lý danh sách đăng ký đề tài</h2>
+
+<div class="table-agile-info">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Quản lý danh sách đăng ký đề tài
+    </div>
     <a href="{{route('user.create')}}">Thêm đề tài khoản</a>
     <div class="table-responsive">
-        <table class="table table-striped table-sm">
-            <thead>
-            <tr>
-                <th>Id</th>
-                <th>Tên đề tài</th>
-                <th>tên</th>
-                <th>loại</th>
-                <th>thực hiện</th>
-            </tr>
-            </thead>
-            <tbody>
-
+      <table class="table table-striped b-t b-light">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Tên đề tài</th>
+            <th>Tên</th>
+            <th>Loại</th>
+            <th>Thực hiện</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
             @foreach($userPosts as $userPost )
                 <tr>
-                    <td>{{$userPost-> id}}</td>
-                    <td>{{$userPost->post->title}}</td>
-                    <td>{{$userPost->user->name}}</td>
-                    <td>{{$userPost->type}}</td>
-                    <td><a href="{{route('list.delete',['id'=>$userPost->id])}}">Xóa</a></td>
+                <td>{{$userPost-> id}}</td>
+                <td>{{$userPost->post->title}}</td>
+                <td>{{$userPost->user->name}}</td>
+                <td>{{$userPost->type}}</td>
+                <td><a style="color: #ff0000;" href="{{route('list.delete',['id'=>$userPost->id])}}"><i class="fa fa-times text-danger text"></i> Xóa</a></td>
                 </tr>
             @endforeach
-            </tbody>
-        </table>
+          </tr>
+        </tbody>
+      </table>
     </div>
+  </div>
+</div>
 @endsection
