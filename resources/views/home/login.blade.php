@@ -19,31 +19,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <link href="{{ asset('/css/fontawesome/css/all.css') }}" rel="stylesheet">
     <!-- //font-awesome icons -->
     <script src="{{ 'js/libs2/jquery2.0.3.min.js' }}"></script>
-
-    <style type="text/css">
-        html,body {
-            background: #2b3137 no-repeat;
-        }
-        .w3layouts-main {
-            background-color: #aabaca
-        }
-        .w3layouts-main input[type="submit"] {
-            background-color: #337ab7;
-        }
-    </style>
 </head>
 <body id="login">
 <div class="log-w3">
     <div class="w3layouts-main">
         <h2>Đăng nhập</h2>
-        <form action="{{route('login')}}"  method="post">
+        <form class="login-form" action="{{route('login')}}"  method="post">
             @csrf
             <label for="email">Email</label>
-            <input type="email" autocomplete="username" class="ggg" id="email" name="email" placeholder="Nhập email">
+            <input type="email" autocomplete="username" class="ggg" id="email" name="email" placeholder="Nhập email" value="">
             <label for="password">Password</label>
             <input type="password" autocomplete="current-password" class="ggg" id="password" name="password" placeholder="Nhập password">
             <span><input type="checkbox" />Nhớ tài khoản</span>
             <h6><a href="#">Quên mật khẩu?</a></h6>
+            <div class="clear-both"></div>
             <input type="submit" class="btn btn-primary" value="Đăng nhập" name="login">
         </form>
     </div>
